@@ -6,6 +6,9 @@
     "name": "CustomGPT.ai",
     "url": "https://customgpt.ai"
   },
+  "homepage": "https://customgpt.ai",
+  "repository": "kirollosatef/customgpt-claude-triple-verification",
+  "license": "MIT",
   "keywords": [
     "verification",
     "security",
@@ -13,9 +16,5 @@
     "audit",
     "enterprise"
   ],
-  "engines": {
-    "claude-code": ">=1.0.0",
-    "node": ">=18.0.0"
-  },
-  "hooks": "../hooks/hooks.json"
+  "hooks": "./hooks/hooks.json"
 }

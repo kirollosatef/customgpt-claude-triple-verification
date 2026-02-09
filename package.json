@@ -1,8 +1,20 @@
 {
-  "name": "customgpt-claude-triple-verification",
+  "name": "@customgpt/claude-triple-verification",
   "version": "1.0.0",
   "description": "Triple verification plugin for Claude Code — blocks placeholder code, security vulnerabilities, and ensures output quality before every operation.",
   "type": "module",
+  "bin": {
+    "customgpt-triple-verify": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    ".claude-plugin/",
+    "scripts/",
+    "hooks/",
+    "config/",
+    "install/",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=18.0.0"
   },
@@ -26,6 +38,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/customgpt-ai/customgpt-claude-triple-verification"
+    "url": "https://github.com/kirollosatef/customgpt-claude-triple-verification"
   }
 }

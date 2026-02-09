@@ -1,0 +1,23 @@
+{
+  "catalog": {
+    "name": "customgpt-claude-triple-verification",
+    "display_name": "Triple Verification by CustomGPT.ai",
+    "description": "Automatic code quality, security, and output verification on every Claude Code operation. Blocks placeholder code, security vulnerabilities, and ensures output quality.",
+    "version": "1.0.0",
+    "author": "CustomGPT.ai",
+    "repository": "kirollosatef/customgpt-claude-triple-verification",
+    "homepage": "https://customgpt.ai",
+    "license": "MIT",
+    "keywords": [
+      "verification",
+      "security",
+      "code-quality",
+      "audit",
+      "enterprise"
+    ],
+    "categories": [
+      "code-quality",
+      "security"
+    ]
+  }
+}

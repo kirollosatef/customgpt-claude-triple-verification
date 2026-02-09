@@ -1,69 +1,69 @@
 {
-  "hooks": [
-    {
-      "matcher": "Write|Edit",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "node \"$CLAUDE_PLUGIN_DIR/scripts/pre-tool-gate.mjs\"",
-          "event": "PreToolUse",
-          "timeout": 10000
-        }
-      ]
-    },
-    {
-      "matcher": "Bash",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "node \"$CLAUDE_PLUGIN_DIR/scripts/pre-tool-gate.mjs\"",
-          "event": "PreToolUse",
-          "timeout": 10000
-        }
-      ]
-    },
-    {
-      "matcher": "mcp__.*",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "node \"$CLAUDE_PLUGIN_DIR/scripts/pre-tool-gate.mjs\"",
-          "event": "PreToolUse",
-          "timeout": 10000
-        }
-      ]
-    },
-    {
-      "matcher": "WebFetch|WebSearch",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "node \"$CLAUDE_PLUGIN_DIR/scripts/pre-tool-gate.mjs\"",
-          "event": "PreToolUse",
-          "timeout": 10000
-        }
-      ]
-    },
-    {
-      "matcher": ".*",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "node \"$CLAUDE_PLUGIN_DIR/scripts/post-tool-audit.mjs\"",
-          "event": "PostToolUse",
-          "timeout": 5000
-        }
-      ]
-    },
-    {
-      "matcher": "",
-      "hooks": [
-        {
-          "type": "prompt",
-          "prompt": "Before completing your response, perform a triple verification review:\n\n1. COMPLETENESS: Did you fully implement what was asked? No placeholders, stubs, or TODOs left behind?\n2. QUALITY: Is the code production-ready? Proper error handling, edge cases considered, no shortcuts?\n3. CORRECTNESS: Does the implementation actually solve the problem? Any logical errors?\n4. SECURITY: Any hardcoded secrets, injection risks, or unsafe patterns?\n5. TESTS: If tests were expected, did you write or verify them?\n\nIf ANY check fails, continue working — do NOT present incomplete work as finished.\nIf all checks pass, proceed with your response.",
-          "event": "Stop"
-        }
-      ]
-    }
-  ]
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/pre-tool-gate.mjs\"",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/pre-tool-gate.mjs\"",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/pre-tool-gate.mjs\"",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "WebFetch|WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/pre-tool-gate.mjs\"",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/post-tool-audit.mjs\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Before completing your response, perform a triple verification review:\n\n1. COMPLETENESS: Did you fully implement what was asked? No placeholders, stubs, or TODOs left behind?\n2. QUALITY: Is the code production-ready? Proper error handling, edge cases considered, no shortcuts?\n3. CORRECTNESS: Does the implementation actually solve the problem? Any logical errors?\n4. SECURITY: Any hardcoded secrets, injection risks, or unsafe patterns?\n5. TESTS: If tests were expected, did you write or verify them?\n\nIf ANY check fails, continue working — do NOT present incomplete work as finished.\nIf all checks pass, proceed with your response."
+          }
+        ]
+      }
+    ]
+  }
 }

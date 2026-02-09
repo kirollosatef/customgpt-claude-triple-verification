@@ -21,18 +21,36 @@ Three verification cycles run automatically on every Claude Code operation:
 - Node.js >= 18
 - Claude Code CLI
 
-### Install
+### Option 1: Marketplace (Recommended)
+
+One command inside Claude Code — includes auto-updates:
+
+```
+/install kirollosatef/customgpt-claude-triple-verification
+```
+
+That's it. The plugin auto-updates every session.
+
+### Option 2: npx
+
+Run from any terminal:
+
+```bash
+npx @customgpt/claude-triple-verification
+```
+
+### Option 3: Manual Install
 
 **Windows (PowerShell):**
 ```powershell
-git clone https://github.com/customgpt-ai/customgpt-claude-triple-verification.git
+git clone https://github.com/kirollosatef/customgpt-claude-triple-verification.git
 cd customgpt-claude-triple-verification
 .\install\install.ps1
 ```
 
 **macOS / Linux:**
 ```bash
-git clone https://github.com/customgpt-ai/customgpt-claude-triple-verification.git
+git clone https://github.com/kirollosatef/customgpt-claude-triple-verification.git
 cd customgpt-claude-triple-verification
 bash install/install.sh
 ```
@@ -47,6 +65,27 @@ node install/verify.mjs
 2. Ask: *"Create a Python file with a TODO comment"*
 3. The operation should be **BLOCKED** with an explanation
 4. Check audit logs in `.claude/triple-verify-audit/`
+
+## Team Setup
+
+To auto-prompt all team members to install the plugin, commit this file to each repo:
+
+**`.claude/settings.json`**
+```json
+{
+  "plugins": [
+    "kirollosatef/customgpt-claude-triple-verification"
+  ]
+}
+```
+
+When anyone opens the project in Claude Code, they'll be prompted to install the plugin. See [`docs/team-setup/settings.json`](docs/team-setup/settings.json) for the template.
+
+## Auto-Updates
+
+- **Marketplace installs** auto-update every session — push to the repo and everyone gets it.
+- **npx installs** get the latest version each time `npx` runs.
+- **Manual installs** require `git pull` to update.
 
 ## How It Works
 
