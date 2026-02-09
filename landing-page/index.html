@@ -1043,6 +1043,20 @@ nav {
 .example-badge.c2 { background: rgba(248, 81, 73, 0.15); color: #f85149; }
 .example-badge.c3 { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
 
+.example-line .check {
+  color: #3fb950;
+  margin-right: 0.5rem;
+}
+
+.example-line .verified-icon {
+  margin-right: 0.5rem;
+}
+
+.example-line .verified-text {
+  color: #3fb950;
+  font-weight: 600;
+}
+
 /* ── Footer ── */
 footer {
   padding: 3rem 2rem;
@@ -1540,6 +1554,45 @@ footer a:hover { text-decoration: underline; }
           </div>
           <div class="example-line">
             <span class="message" style="color: #58a6ff;">→ Use environment variables and JSON.parse() instead</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example 3: Cycle 3 - Output Quality Review -->
+      <div class="example-terminal reveal" id="example3">
+        <div class="example-terminal-bar">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="title">claude code — triple verification</span>
+        </div>
+        <div class="example-terminal-body">
+          <div class="example-line">
+            <span class="prompt">$</span>
+            <span class="user-input">claude "Build a user authentication system"</span>
+          </div>
+          <div class="example-line">
+            <span class="generating">Claude is finishing response</span><span class="typing-cursor"></span>
+          </div>
+          <div class="example-line">
+            <span class="example-badge c3">CYCLE 3</span>
+            <span style="color: #8b949e; margin-left: 0.5rem;">Output Quality Review</span>
+          </div>
+          <div class="example-line">
+            <div class="code-snippet" style="background: transparent; border-color: #238636;">
+              <div><span class="check">✓</span> <span style="color: #c9d1d9;">Completeness</span> <span style="color: #8b949e;">— All requirements implemented</span></div>
+              <div><span class="check">✓</span> <span style="color: #c9d1d9;">Quality</span> <span style="color: #8b949e;">— Production-ready with error handling</span></div>
+              <div><span class="check">✓</span> <span style="color: #c9d1d9;">Correctness</span> <span style="color: #8b949e;">— Logic verified, no bugs found</span></div>
+              <div><span class="check">✓</span> <span style="color: #c9d1d9;">Security</span> <span style="color: #8b949e;">— No hardcoded secrets or injection risks</span></div>
+              <div><span class="check">✓</span> <span style="color: #c9d1d9;">Tests</span> <span style="color: #8b949e;">— Unit tests included and passing</span></div>
+            </div>
+          </div>
+          <div class="example-line">
+            <span class="verified-icon">✅</span>
+            <span class="verified-text">All checks passed — Response approved</span>
+          </div>
+          <div class="example-line">
+            <span class="message" style="color: #3fb950;">→ Claude delivers verified, production-ready code</span>
           </div>
         </div>
       </div>
