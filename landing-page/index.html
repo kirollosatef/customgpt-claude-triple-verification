@@ -579,15 +579,164 @@ nav {
 
 .tab-panel.active { display: block; }
 
-.tab-panel .cmd {
-  color: var(--purple);
-  display: block;
-  margin: 0.3rem 0;
+/* ── Install Steps ── */
+.install-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.tab-panel .comment {
+.install-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--magenta), var(--purple));
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.step-label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.code-block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--purple);
+  flex: 1;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-dim);
+  transition: stroke 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--bg-mid);
+}
+
+.copy-btn:hover svg {
+  stroke: var(--purple);
+}
+
+.copy-btn.copied svg {
+  stroke: var(--green);
+}
+
+.step-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--text-dim);
-  display: block;
+  margin-top: 0.4rem;
+}
+
+.code-block-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.code-block-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.3rem;
+}
+
+.code-block-label:first-child {
+  margin-top: 0;
+}
+
+.install-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, rgba(233, 48, 255, 0.08), rgba(123, 47, 190, 0.08));
+  border: 1px solid var(--magenta-dim);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--purple);
+}
+
+.install-badge svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--magenta);
+}
+
+.install-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.install-note svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-dim);
+  flex-shrink: 0;
 }
 
 /* ── FAQ ── */
@@ -869,38 +1018,120 @@ footer a:hover { text-decoration: underline; }
       </div>
       <div class="tab-panels">
         <div class="tab-panel active" id="tab-marketplace">
-          <span class="comment"># Inside Claude Code, run:</span>
-          <span class="cmd">/plugin marketplace add kirollosatef/customgpt-claude-triple-verification</span>
-          <span class="cmd">/plugin install customgpt-claude-triple-verification@kirollosatef-customgpt-claude-triple-verification</span>
-          <br>
-          <span class="comment"># Auto-updates every session.</span>
-          <br>
-          <span class="comment"># Test it &mdash; ask Claude to write a TODO:</span>
-          <span class="cmd">claude "Create a Python file with a TODO comment"</span>
-          <span class="comment"># &rarr; BLOCKED by Cycle 1</span>
+          <div class="install-steps">
+            <div class="install-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <div class="step-label">Add the marketplace</div>
+                <div class="code-block">
+                  <code>/plugin marketplace add kirollosatef/customgpt-claude-triple-verification</code>
+                  <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="install-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <div class="step-label">Install the plugin</div>
+                <div class="code-block">
+                  <code>/plugin install customgpt-claude-triple-verification@kirollosatef-customgpt-claude-triple-verification</code>
+                  <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="install-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <div class="step-label">Test it out</div>
+                <div class="code-block">
+                  <code>claude "Create a Python file with a TODO comment"</code>
+                  <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                  </button>
+                </div>
+                <div class="step-hint">→ Should be BLOCKED by Cycle 1</div>
+              </div>
+            </div>
+          </div>
+          <div class="install-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l2 4 4.5.5-3.25 3.5 1 4.5L8 11l-4.25 2.5 1-4.5L1.5 5.5 6 5l2-4z"/></svg>
+            Auto-updates every session
+          </div>
         </div>
         <div class="tab-panel" id="tab-npx">
-          <span class="comment"># Run from any terminal:</span>
-          <span class="cmd">npx @customgpt/claude-triple-verification</span>
-          <br>
-          <span class="comment"># Copies plugin to ~/.claude/plugins/</span>
-          <span class="comment"># Runs smoke test automatically</span>
-          <br>
-          <span class="comment"># For auto-updates, use the marketplace method instead.</span>
+          <div class="install-steps">
+            <div class="install-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <div class="step-label">Run the installer</div>
+                <div class="code-block">
+                  <code>npx @customgpt/claude-triple-verification</code>
+                  <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                  </button>
+                </div>
+                <div class="step-hint">Copies plugin to ~/.claude/plugins/ and runs smoke test</div>
+              </div>
+            </div>
+          </div>
+          <div class="install-note">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3M8 10.5v.5"/></svg>
+            For auto-updates, use the Marketplace method instead
+          </div>
         </div>
         <div class="tab-panel" id="tab-manual">
-          <span class="comment"># Clone and install manually</span>
-          <span class="cmd">git clone https://github.com/kirollosatef/customgpt-claude-triple-verification.git</span>
-          <span class="cmd">cd customgpt-claude-triple-verification</span>
-          <br>
-          <span class="comment"># Windows:</span>
-          <span class="cmd">.\install\install.ps1</span>
-          <br>
-          <span class="comment"># macOS / Linux:</span>
-          <span class="cmd">bash install/install.sh</span>
-          <br>
-          <span class="comment"># Verify:</span>
-          <span class="cmd">node install/verify.mjs</span>
+          <div class="install-steps">
+            <div class="install-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <div class="step-label">Clone the repository</div>
+                <div class="code-block">
+                  <code>git clone https://github.com/kirollosatef/customgpt-claude-triple-verification.git</code>
+                  <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="install-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <div class="step-label">Run the installer</div>
+                <div class="code-block-group">
+                  <div class="code-block-label">Windows</div>
+                  <div class="code-block">
+                    <code>.\install\install.ps1</code>
+                    <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                    </button>
+                  </div>
+                  <div class="code-block-label">macOS / Linux</div>
+                  <div class="code-block">
+                    <code>bash install/install.sh</code>
+                    <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="install-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <div class="step-label">Verify installation</div>
+                <div class="code-block">
+                  <code>node install/verify.mjs</code>
+                  <button class="copy-btn" onclick="copyCode(this)" title="Copy to clipboard">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1009,6 +1240,19 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Copy to clipboard
+function copyCode(btn) {
+  const code = btn.parentElement.querySelector('code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 8 6 11 13 4"/></svg>';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M5 11H3.5A1.5 1.5 0 012 9.5v-7A1.5 1.5 0 013.5 1h7A1.5 1.5 0 0112 2.5V5"/></svg>';
+    }, 2000);
+  });
+}
 </script>
 </body>
 </html>
