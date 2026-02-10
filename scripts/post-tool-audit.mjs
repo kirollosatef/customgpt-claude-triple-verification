@@ -11,7 +11,7 @@
  * This provides full auditability of every Claude Code operation.
  */
 
-import { readStdinJSON, failOpen } from './lib/utils.mjs';
+import { readStdinJSON, isResearchFile, failOpen } from './lib/utils.mjs';
 import { logPostTool } from './lib/audit-logger.mjs';
 
 await failOpen(async () => {
@@ -38,6 +38,13 @@ await failOpen(async () => {
   }
   if (toolInput.pattern) {
     metadata.pattern = toolInput.pattern;
+  }
+
+  // Add applicable cycles context based on file type
+  if (toolInput.file_path) {
+    metadata.applicableCycles = isResearchFile(toolInput.file_path)
+      ? 'Cycle 4 (Research Verification)'
+      : 'Cycles 1-3';
   }
 
   // Log the tool use

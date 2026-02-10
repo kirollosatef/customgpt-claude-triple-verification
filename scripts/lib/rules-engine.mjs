@@ -1,11 +1,14 @@
 /**
  * Rules Engine — All Cycle 1 + Cycle 2 verification rules.
+ * Cycle 4 rules are in research-verifier.mjs and merged via getAllRules().
  *
  * Each rule: { id, description, pattern (RegExp), appliesTo, fileExtensions?, message }
  *
  * appliesTo: 'file-write' | 'bash' | 'mcp' | 'web' | 'all'
  * fileExtensions: optional array of extensions (e.g. ['.py']). If omitted, applies to all.
  */
+
+import { getAllCycle4Rules } from './research-verifier.mjs';
 
 // ─── Cycle 1: Code Quality Rules ────────────────────────────────────────────
 
@@ -183,7 +186,8 @@ export function runCycle2(content, fileExt, context, config = {}) {
 export function getAllRules() {
   return {
     cycle1: CYCLE1_RULES.map(r => ({ ...r, pattern: r.pattern.source })),
-    cycle2: CYCLE2_RULES.map(r => ({ ...r, pattern: r.pattern.source }))
+    cycle2: CYCLE2_RULES.map(r => ({ ...r, pattern: r.pattern.source })),
+    cycle4: getAllCycle4Rules()
   };
 }
 

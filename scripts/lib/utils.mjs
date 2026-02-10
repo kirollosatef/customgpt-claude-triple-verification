@@ -52,6 +52,20 @@ export function getFileExtension(filePath) {
 }
 
 /**
+ * Check if a file path is a research markdown file.
+ * Returns true if extension is .md AND path contains /research/ or filename contains "research".
+ * Normalizes backslashes for cross-OS support.
+ */
+export function isResearchFile(filePath) {
+  if (!filePath || typeof filePath !== 'string') return false;
+  const normalized = filePath.replace(/\\/g, '/').toLowerCase();
+  if (!normalized.endsWith('.md')) return false;
+  // Path contains a /research/ directory segment OR filename contains "research"
+  const fileName = normalized.split('/').pop() || '';
+  return normalized.includes('/research/') || fileName.includes('research');
+}
+
+/**
  * Determine the project root directory.
  * Walks up from CWD looking for .git, package.json, or .claude directory.
  * Falls back to CWD.

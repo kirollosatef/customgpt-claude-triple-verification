@@ -13,6 +13,7 @@ Three verification cycles run automatically on every Claude Code operation:
 | **Cycle 1 — Code Quality** | Before file write/edit | Blocks TODO, placeholder, stub, and incomplete code |
 | **Cycle 2 — Security** | Before write/edit/bash/MCP | Blocks eval(), hardcoded secrets, SQL injection, XSS, destructive commands |
 | **Cycle 3 — Output Quality** | Before Claude finishes | Second AI review ensures completeness and correctness |
+| **Cycle 4 — Research Claims** | Before write/edit of research .md | Blocks vague language, unverified stats, missing source URLs |
 | **Audit Trail** | After every operation | Full JSONL audit log of all operations |
 
 ## Quick Start
@@ -111,6 +112,11 @@ User Request → Claude generates code
               └──────┬──────┘
                      ↓
               ┌─────────────┐
+              │  Cycle 4    │  PreToolUse (Write|Edit) + Stop
+              │  Research   │  Blocks vague claims, missing sources
+              └──────┬──────┘
+                     ↓
+              ┌─────────────┐
               │  Audit      │  PostToolUse (all tools)
               │  Logger     │  JSONL trail of every operation
               └─────────────┘
@@ -167,6 +173,11 @@ See [docs/RULES.md](docs/RULES.md) for the complete list of verification rules w
 - `no-curl-pipe-sh` — Block `curl | sh` patterns
 - `no-insecure-url` — Block non-HTTPS URLs (except localhost)
 
+### Cycle 4 — Research Claims
+- `no-vague-claims` — Block "studies show", "experts say", and similar vague language
+- `no-unverified-claims` — Block claims without `<!-- PERPLEXITY_VERIFIED -->` tag
+- `no-unsourced-claims` — Block claims lacking a source URL within 300 characters
+
 ## Development
 
 ### Run Tests
@@ -178,6 +189,7 @@ npm test
 ```bash
 npm run test:cycle1
 npm run test:cycle2
+npm run test:cycle4
 npm run test:audit
 npm run test:config
 ```

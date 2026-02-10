@@ -103,6 +103,23 @@ Injects a review prompt that asks Claude to self-verify:
 4. Security — No hardcoded secrets or injection risks
 5. Tests — If tests were expected, they exist and pass
 
+### Cycle 4 — Research Claim Verification (PreToolUse + Stop)
+
+**Triggers:** Write/Edit of research `.md` files (PreToolUse) + session end scan (Stop)
+**Type:** Command hook (blocks on violation)
+
+Runs two-pass verification on research markdown files. A file is considered "research" if it has a `.md` extension AND either lives in a `/research/` directory or has "research" in its filename.
+
+**Pass 1 — Vague Language Detection:**
+Scans for 14 vague phrases like "studies show", "experts say", "data suggests". Instant block if found.
+
+**Pass 2 — Claim Extraction + Source Proximity:**
+1. Extracts statistical/factual claims (percentages, dollar amounts, multipliers, study references, etc.)
+2. Requires `<!-- PERPLEXITY_VERIFIED -->` tag — proves claims were checked via Perplexity MCP tools
+3. Each claim must have a source URL (markdown link, bare URL, or `[Source:]`/`[Ref:]`/`[Verified:]` marker) within 300 characters
+
+The **Stop gate** also scans `docs/research/`, `research/`, and `docs/` directories at session end for any research files that may have been written without going through the PreToolUse gate.
+
 ### Audit Trail (PostToolUse)
 
 **Triggers:** All tool calls
@@ -125,13 +142,15 @@ Logs every operation to a JSONL file for full auditability. Each entry includes:
 bin/
 └── cli.mjs                    # npx entry point (installer)
 scripts/
-├── pre-tool-gate.mjs          # Main dispatcher for PreToolUse
+├── pre-tool-gate.mjs          # Main dispatcher for PreToolUse (Cycles 1-2 + Cycle 4 routing)
 ├── post-tool-audit.mjs        # Audit logger for PostToolUse
+├── stop-gate.mjs              # Stop gate — scans research files at session end (Cycle 4)
 └── lib/
     ├── rules-engine.mjs       # All Cycle 1 + 2 rule definitions
+    ├── research-verifier.mjs  # Cycle 4 research claim verification engine
     ├── audit-logger.mjs       # JSONL structured logging
     ├── config-loader.mjs      # Multi-source config merge
-    └── utils.mjs              # Stdin reader, helpers
+    └── utils.mjs              # Stdin reader, helpers, isResearchFile()
 hooks/
 └── hooks.json                 # Hook configuration (event-keyed)
 config/
@@ -155,12 +174,25 @@ stdin (JSON) → pre-tool-gate.mjs
                     ↓
               extractContent()     # Determine what to verify based on tool type
                     ↓
-              runCycle1()          # Code quality patterns
-              runCycle2()          # Security patterns
+              isResearchFile?
+              ├── YES → runCycle4()   # Research claim verification
+              └── NO  → runCycle1()   # Code quality patterns
+                        runCycle2()   # Security patterns
                     ↓
               violations?
               ├── YES → deny() + logPreTool('block')
               └── NO  → approve() + logPreTool('approve')
+
+Stop hook (session end):
+              stop-gate.mjs
+                    ↓
+              Find research .md files in docs/research/, research/, docs/
+                    ↓
+              runCycle4() on each file
+                    ↓
+              violations?
+              ├── YES → deny() with per-file summary
+              └── NO  → approve()
 ```
 
 ## Configuration Merge

@@ -59,6 +59,11 @@
         "matcher": "",
         "hooks": [
           {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/stop-gate.mjs\"",
+            "timeout": 15000
+          },
+          {
             "type": "prompt",
             "prompt": "Before completing your response, perform a triple verification review:\n\n1. COMPLETENESS: Did you fully implement what was asked? No placeholders, stubs, or TODOs left behind?\n2. QUALITY: Is the code production-ready? Proper error handling, edge cases considered, no shortcuts?\n3. CORRECTNESS: Does the implementation actually solve the problem? Any logical errors?\n4. SECURITY: Any hardcoded secrets, injection risks, or unsafe patterns?\n5. TESTS: If tests were expected, did you write or verify them?\n\nIf ANY check fails, continue working — do NOT present incomplete work as finished.\nIf all checks pass, proceed with your response."
           }

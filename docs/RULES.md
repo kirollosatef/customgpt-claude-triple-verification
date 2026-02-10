@@ -286,3 +286,75 @@ The Stop hook uses a prompt-based review. Claude self-verifies before completing
 3. **Correctness** — Logic is sound, solves the actual problem
 4. **Security** — No secrets, no injection risks
 5. **Tests** — If expected, tests exist and are meaningful
+
+---
+
+## Cycle 4 — Research Claim Verification
+
+These rules run on `Write` and `Edit` tool calls for research `.md` files (files in a `/research/` directory or with "research" in the filename). They also run via the Stop gate at session end.
+
+A research file must include a `<!-- PERPLEXITY_VERIFIED -->` HTML comment tag to prove all claims were verified using Perplexity MCP tools.
+
+### `no-vague-claims`
+**Block vague unsourced language like "studies show", "experts say"**
+
+Blocked phrases: "studies show", "research indicates", "experts say", "according to research", "data suggests", "it is known that", "generally accepted", "industry reports", "recent surveys", "analysts estimate", "sources suggest", "widely reported", "it has been shown", "evidence suggests"
+
+Blocked:
+```markdown
+Studies show that AI adoption is accelerating across industries.
+Experts say that most enterprises will deploy AI by 2025.
+```
+
+Allowed:
+```markdown
+According to the McKinsey 2023 Annual Report, AI adoption grew by 25% year-over-year.
+The Stanford HAI 2023 Index measured a 35% increase in enterprise AI deployments.
+```
+
+### `no-unverified-claims`
+**Block statistical/factual claims without `<!-- PERPLEXITY_VERIFIED -->` tag**
+
+Blocked:
+```markdown
+# Market Report
+The AI market grew by 35% in 2023 and reached $150 billion.
+```
+
+Allowed:
+```markdown
+<!-- PERPLEXITY_VERIFIED -->
+
+# Market Report
+The AI market grew by 35% in 2023 according to [IDC](https://www.idc.com/report).
+```
+
+### `no-unsourced-claims`
+**Block claims that lack a source URL within 300 characters**
+
+Even with the `<!-- PERPLEXITY_VERIFIED -->` tag, each claim must have a nearby source — a markdown link `[text](url)`, a bare URL `https://...`, or a marker like `[Source:]`, `[Ref:]`, or `[Verified:]`.
+
+Blocked:
+```markdown
+<!-- PERPLEXITY_VERIFIED -->
+
+The AI market grew by 35% in 2023.
+
+(... 300+ characters of text without any source link ...)
+```
+
+Allowed:
+```markdown
+<!-- PERPLEXITY_VERIFIED -->
+
+The AI market grew by 35% in 2023 [Source: https://www.idc.com/ai-spending-guide].
+Revenue reached $150.2 billion per the [IDC Worldwide AI Spending Guide](https://www.idc.com/promo/ai-spending-guide).
+```
+
+### Perplexity MCP Workflow
+
+To verify research claims:
+1. Use `mcp__perplexity__perplexity_search` or `mcp__perplexity__perplexity_research` to verify each claim
+2. Add source URLs from the verification results near each claim
+3. Add `<!-- PERPLEXITY_VERIFIED -->` at the top of the file
+4. The plugin will then check that all claims have nearby sources

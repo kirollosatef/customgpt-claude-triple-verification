@@ -11,6 +11,7 @@ import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runCycle1, runCycle2 } from '../scripts/lib/rules-engine.mjs';
+import { runCycle4 } from '../scripts/lib/research-verifier.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixturesDir = resolve(__dirname, '..', 'tests', 'fixtures');
@@ -113,6 +114,32 @@ test('allows localhost HTTP', () => {
 test('approves clean TypeScript (security)', () => {
   const content = readFileSync(resolve(fixturesDir, 'clean-file.ts'), 'utf-8');
   const violations = runCycle2(content, '.ts', 'file-write');
+  assert(violations.length === 0, `Expected no violations, got ${violations.length}`);
+});
+
+console.log('');
+
+// ─── Cycle 4: Research Claim Verification ─────────────────────────────
+
+console.log('Cycle 4 — Research Claim Verification:');
+
+test('blocks vague language in research files', () => {
+  const content = 'Studies show that AI adoption is accelerating.';
+  const violations = runCycle4(content, 'docs/research/report.md');
+  assert(violations.length > 0, 'Expected violations for vague language');
+  assert(violations.some(v => v.ruleId === 'no-vague-claims'), 'Expected no-vague-claims rule');
+});
+
+test('blocks unsourced claims in research files', () => {
+  const content = 'The AI market grew by 35% in 2023 and reached $150 billion.';
+  const violations = runCycle4(content, 'docs/research/report.md');
+  assert(violations.length > 0, 'Expected violations for unsourced claims');
+  assert(violations.some(v => v.ruleId === 'no-unverified-claims'), 'Expected no-unverified-claims rule');
+});
+
+test('approves clean verified research file', () => {
+  const content = readFileSync(resolve(fixturesDir, 'clean-research.md'), 'utf-8');
+  const violations = runCycle4(content, 'docs/research/clean-research.md');
   assert(violations.length === 0, `Expected no violations, got ${violations.length}`);
 });
 

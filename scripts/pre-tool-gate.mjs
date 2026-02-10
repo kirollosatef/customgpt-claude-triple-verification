@@ -19,8 +19,9 @@
  *   - WebFetch/WebSearch (url field)
  */
 
-import { readStdinJSON, deny, approve, getFileExtension, failOpen } from './lib/utils.mjs';
+import { readStdinJSON, deny, approve, getFileExtension, isResearchFile, failOpen } from './lib/utils.mjs';
 import { runCycle1, runCycle2 } from './lib/rules-engine.mjs';
+import { runCycle4 } from './lib/research-verifier.mjs';
 import { logPreTool } from './lib/audit-logger.mjs';
 import { loadConfig } from './lib/config-loader.mjs';
 
@@ -36,7 +37,7 @@ await failOpen(async () => {
   const toolInput = input.tool_input || {};
 
   // Determine what content to verify and what context to use
-  const { content, context, fileExt } = extractContent(toolName, toolInput);
+  const { content, context, fileExt, filePath } = extractContent(toolName, toolInput);
 
   if (!content) {
     // No content to verify — approve
@@ -45,10 +46,18 @@ await failOpen(async () => {
     process.exit(0);
   }
 
-  // Run both verification cycles
-  const cycle1Violations = runCycle1(content, fileExt, context, config);
-  const cycle2Violations = runCycle2(content, fileExt, context, config);
-  const allViolations = [...cycle1Violations, ...cycle2Violations];
+  // Route to the appropriate verification cycles
+  let allViolations;
+
+  if (isResearchFile(filePath) && config.cycle4?.enabled !== false) {
+    // Research files → Cycle 4 only
+    allViolations = runCycle4(content, filePath, config);
+  } else {
+    // All other files → Cycles 1 + 2
+    const cycle1Violations = runCycle1(content, fileExt, context, config);
+    const cycle2Violations = runCycle2(content, fileExt, context, config);
+    allViolations = [...cycle1Violations, ...cycle2Violations];
+  }
 
   if (allViolations.length > 0) {
     // Format violation messages
@@ -71,12 +80,15 @@ await failOpen(async () => {
 function extractContent(toolName, toolInput) {
   const normalized = toolName.toLowerCase();
 
+  const filePath = toolInput.file_path || '';
+
   // Write tool — verify file content
   if (normalized === 'write') {
     return {
       content: toolInput.content || '',
       context: 'file-write',
-      fileExt: getFileExtension(toolInput.file_path || '')
+      fileExt: getFileExtension(filePath),
+      filePath
     };
   }
 
@@ -85,7 +97,8 @@ function extractContent(toolName, toolInput) {
     return {
       content: toolInput.new_string || '',
       context: 'file-write',
-      fileExt: getFileExtension(toolInput.file_path || '')
+      fileExt: getFileExtension(filePath),
+      filePath
     };
   }
 
@@ -94,7 +107,8 @@ function extractContent(toolName, toolInput) {
     return {
       content: toolInput.command || '',
       context: 'bash',
-      fileExt: ''
+      fileExt: '',
+      filePath: ''
     };
   }
 
@@ -103,7 +117,8 @@ function extractContent(toolName, toolInput) {
     return {
       content: toolInput.url || toolInput.query || '',
       context: 'web',
-      fileExt: ''
+      fileExt: '',
+      filePath: ''
     };
   }
 
@@ -115,10 +130,11 @@ function extractContent(toolName, toolInput) {
     return {
       content: values,
       context: 'mcp',
-      fileExt: ''
+      fileExt: '',
+      filePath: ''
     };
   }
 
   // Unknown tool — nothing to verify
-  return { content: '', context: 'unknown', fileExt: '' };
+  return { content: '', context: 'unknown', fileExt: '', filePath: '' };
 }

@@ -23,6 +23,7 @@
     "test:cycle1": "node --test tests/test-cycle1.mjs",
     "test:cycle2": "node --test tests/test-cycle2.mjs",
     "test:audit": "node --test tests/test-audit.mjs",
+    "test:cycle4": "node --test tests/test-cycle4.mjs",
     "test:config": "node --test tests/test-config.mjs",
     "verify": "node install/verify.mjs"
   },

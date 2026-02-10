@@ -294,7 +294,7 @@ nav {
 
 .cycles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
@@ -1042,6 +1042,7 @@ nav {
 .example-badge.c1 { background: rgba(59, 130, 246, 0.15); color: #58a6ff; }
 .example-badge.c2 { background: rgba(248, 81, 73, 0.15); color: #f85149; }
 .example-badge.c3 { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+.example-badge.c4 { background: rgba(233, 48, 255, 0.15); color: #E930FF; }
 
 .example-line .check {
   color: #3fb950;
@@ -1099,8 +1100,15 @@ footer a:hover { text-decoration: underline; }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ── Responsive ── */
+@media (max-width: 1024px) {
+  .cycles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .cycles-grid {
     grid-template-columns: 1fr;
@@ -1148,7 +1156,7 @@ footer a:hover { text-decoration: underline; }
   <div class="container hero-content">
     <div class="hero-label">Claude Code Plugin</div>
     <h1><span class="accent">Triple Verification</span><br>for Claude Code</h1>
-    <p class="hero-tagline">Automatic code quality, security, and output verification on every operation. Zero placeholder code. Zero vulnerabilities. Full auditability.</p>
+    <p class="hero-tagline">Automatic code quality, security, output verification, and research claim checking on every operation. Zero placeholder code. Zero vulnerabilities. Zero hallucinated citations.</p>
     <a href="#install" class="hero-cta">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
       Get Started
@@ -1163,8 +1171,8 @@ footer a:hover { text-decoration: underline; }
 <section class="cycles" id="cycles">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Three Gates</div>
-      <h2>Every Operation. Triple Checked.</h2>
+      <div class="section-tag">Four Gates</div>
+      <h2>Every Operation. Quadruple Checked.</h2>
     </div>
     <div class="cycles-grid">
       <div class="cycle-card reveal reveal-delay-1">
@@ -1190,6 +1198,14 @@ footer a:hover { text-decoration: underline; }
         </div>
         <h3>Output Quality</h3>
         <p>Second AI reviews completeness, correctness, and quality before finishing. Multi-agent verification.</p>
+      </div>
+      <div class="cycle-card reveal reveal-delay-4">
+        <div class="cycle-number">Cycle 04</div>
+        <div class="cycle-icon">
+          <svg viewBox="0 0 32 32"><path d="M6 4h14l6 6v18H6V4z"/><path d="M20 4v6h6"/><path d="M10 16h12M10 20h12M10 24h8"/><circle cx="24" cy="24" r="6" fill="none" stroke-width="2"/><path d="M22 24l1.5 1.5 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Research Claims</h3>
+        <p>Blocks vague language, unverified statistics, and missing sources in research files. Requires Perplexity verification.</p>
       </div>
     </div>
   </div>
@@ -1415,7 +1431,7 @@ footer a:hover { text-decoration: underline; }
           <span class="chevron">&#x25BC;</span>
         </div>
         <div class="faq-a">
-          <div class="faq-a-inner">&lt;50ms per operation for Cycle 1 + 2 (regex pattern matching). Cycle 3 uses a prompt hook, which adds a second AI review pass before Claude completes its response.</div>
+          <div class="faq-a-inner">&lt;50ms per operation for Cycles 1, 2, and 4 (regex pattern matching). Cycle 3 uses a prompt hook, which adds a second AI review pass before Claude completes its response. Cycle 4 also runs a session-end scan of research files.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -1443,6 +1459,15 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="faq-a">
           <div class="faq-a-inner">Yes. All MCP tool inputs (any tool prefixed with <code>mcp__</code>) are verified through Cycle 2 security rules. URL inputs are checked for HTTPS, and all string values are scanned.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is the PERPLEXITY_VERIFIED tag?
+          <span class="chevron">&#x25BC;</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Cycle 4 requires research <code>.md</code> files to include a <code>&lt;!-- PERPLEXITY_VERIFIED --&gt;</code> HTML comment, proving that factual claims were checked using Perplexity MCP tools. Without it, any file containing statistics, percentages, or dollar amounts will be blocked.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -1593,6 +1618,45 @@ footer a:hover { text-decoration: underline; }
           </div>
           <div class="example-line">
             <span class="message" style="color: #3fb950;">→ Claude delivers verified, production-ready code</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example 4: Cycle 4 - Research Claim Verification -->
+      <div class="example-terminal reveal" id="example4">
+        <div class="example-terminal-bar">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="title">claude code — triple verification</span>
+        </div>
+        <div class="example-terminal-body">
+          <div class="example-line">
+            <span class="prompt">$</span>
+            <span class="user-input">claude "Write a research report on AI market trends"</span>
+          </div>
+          <div class="example-line">
+            <span class="generating">Claude is writing docs/research/ai-market.md</span><span class="typing-cursor"></span>
+          </div>
+          <div class="example-line">
+            <div class="code-snippet">
+              <div><span class="cm"># AI Market Research</span></div>
+              <div><span class="bad">Studies show</span> that AI adoption is accelerating.</div>
+              <div>The market grew by <span class="bad">45%</span> in 2024.</div>
+            </div>
+          </div>
+          <div class="example-line">
+            <span class="example-badge c4">CYCLE 4</span>
+          </div>
+          <div class="example-line">
+            <span class="blocked-icon">⛔</span>
+            <span class="blocked-text">Triple Verification BLOCKED this operation</span>
+          </div>
+          <div class="example-line">
+            <span class="message">[no-vague-claims] Contains "studies show" — name the study, author, and link the source</span>
+          </div>
+          <div class="example-line">
+            <span class="message" style="color: #58a6ff;">→ Verify claims with Perplexity, add sources, include &lt;!-- PERPLEXITY_VERIFIED --&gt; tag</span>
           </div>
         </div>
       </div>

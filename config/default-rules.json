@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "failMode": "open",
   "disabledRules": [],
   "cycle1": {
@@ -13,6 +13,10 @@
   "cycle3": {
     "enabled": true,
     "description": "Output quality verification — second AI reviews completeness and correctness"
+  },
+  "cycle4": {
+    "enabled": true,
+    "description": "Research claim verification — blocks vague language, unverified statistics, and missing source URLs in research files"
   },
   "audit": {
     "enabled": true,
