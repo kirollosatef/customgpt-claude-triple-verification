@@ -60,9 +60,9 @@ export function isResearchFile(filePath) {
   if (!filePath || typeof filePath !== 'string') return false;
   const normalized = filePath.replace(/\\/g, '/').toLowerCase();
   if (!normalized.endsWith('.md')) return false;
-  // Path contains a /research/ directory segment OR filename contains "research"
+  // Path contains a /research/ directory segment, starts with research/, or filename contains "research"
   const fileName = normalized.split('/').pop() || '';
-  return normalized.includes('/research/') || fileName.includes('research');
+  return normalized.includes('/research/') || normalized.startsWith('research/') || fileName.includes('research');
 }
 
 /**
