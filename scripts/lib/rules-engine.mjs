@@ -125,7 +125,7 @@ const CYCLE2_RULES = [
   {
     id: 'no-rm-rf',
     description: 'Block destructive rm -rf on root or home',
-    pattern: /rm\s+(-[a-zA-Z]*)?r[a-zA-Z]*f[a-zA-Z]*\s+(?:\/\s|\/\*|\$HOME|\$\{HOME\}|~\/|\/root|C:\\)/i,
+    pattern: /rm\s+(-[a-zA-Z]*)?r[a-zA-Z]*f[a-zA-Z]*\s+(?:\/(?:\s|$|\*)|\$HOME|\$\{HOME\}|~\/|\/root|C:\\)/i,
     appliesTo: 'bash',
     fileExtensions: null,
     message: 'Command attempts destructive recursive delete on a critical path. This could destroy the system.'

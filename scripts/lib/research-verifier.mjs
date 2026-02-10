@@ -47,7 +47,7 @@ const CLAIM_PATTERNS = [
   /\b(study|survey|report)\s+(by|from|at)\b/i,    // study references
   /\b[A-Z][a-z]+\s+(University|Institute|Lab)\b/, // named studies/institutions
   /\b\d+(\.\d+)?\s*times\s+(more|less|faster|slower|higher|lower|greater|better|worse)\b/i, // comparative claims
-  /\b(in|since|by|from)\s+\d{4}\b/               // year-specific claims
+  /\b(in|since|by|from)\s+\d{4}\b/i              // year-specific claims
 ];
 
 // ─── Source Proximity Check ─────────────────────────────────────────────────
@@ -95,7 +95,7 @@ const CYCLE4_RULES = [
  * @returns {Array<{ruleId: string, cycle: number, message: string}>}
  */
 export function runCycle4(content, filePath = '', config = {}) {
-  const disabledRules = config.disabledRules || [];
+  const disabledRules = (config && config.disabledRules) || [];
   const violations = [];
 
   if (!content || typeof content !== 'string') return violations;
