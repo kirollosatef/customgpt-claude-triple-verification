@@ -1,3 +1,3 @@
-- [Docs](/)
+- [Docs](/customgpt-claude-quadruple-verification/docs/)
 - [GitHub](https://github.com/kirollosatef/customgpt-claude-quadruple-verification)
-- [<span class="landing-link">Landing Page</span>](landing/)
+- [<span class="landing-link">Home Page</span>](/customgpt-claude-quadruple-verification/)

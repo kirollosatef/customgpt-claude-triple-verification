@@ -36,10 +36,10 @@ jobs:
       - name: Prepare deployment
         run: |
           mkdir -p deploy
-          cp -r docs-site/* deploy/
+          cp -r landing-page/* deploy/
           cp docs-site/.nojekyll deploy/
-          mkdir -p deploy/landing
-          cp landing-page/index.html deploy/landing/index.html
+          mkdir -p deploy/docs
+          cp -r docs-site/* deploy/docs/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

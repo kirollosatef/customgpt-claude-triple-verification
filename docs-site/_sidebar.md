@@ -23,4 +23,4 @@
 
 - **Links**
   - [![GitHub](https://img.shields.io/badge/GitHub-repo-181717?logo=github)](https://github.com/kirollosatef/customgpt-claude-quadruple-verification)
-  - [Landing Page](landing/)
+  - [Home Page](/customgpt-claude-quadruple-verification/)
