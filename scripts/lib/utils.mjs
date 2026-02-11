@@ -1,5 +1,5 @@
 /**
- * Shared utilities for triple verification hooks.
+ * Shared utilities for quadruple verification hooks.
  * Zero dependencies — Node.js built-ins only.
  */
 
@@ -114,9 +114,10 @@ export async function failOpen(fn) {
   try {
     await fn();
   } catch (err) {
-    // Fail open: print nothing (or approve), exit 0
+    // Fail open: approve and exit 0
     // Log error to stderr for debugging but don't block
-    process.stderr.write(`[triple-verify] Error (fail-open): ${err.message}\n`);
+    process.stderr.write(`[quadruple-verify] Error (fail-open): ${err.message}\n`);
+    process.stdout.write(JSON.stringify({ decision: 'approve' }));
     process.exit(0);
   }
 }
