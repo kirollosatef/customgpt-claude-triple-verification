@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CustomGPT Quadruple Verification — Documentation</title>
+  <meta name="description" content="Automatic quadruple verification for Claude Code. Blocks placeholder code, security vulnerabilities, and ensures output quality.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M5.875 17.5831C5.25 17.5831 4.6875 17.2106 4.4375 16.6519H0C0.25 18.4523 1.5625 19.9424 3.3125 20.3769C2.75 22.612 3.9375 24.6608 5.75 25.592C5.8125 28.0754 7.8125 30 10.3125 30C12 30 13.5 29.0687 14.3125 27.6408V20.2528H11.0625V22.1774C11.625 22.4257 12 22.9845 12 23.6053C12 24.4745 11.3125 25.1574 10.4375 25.1574C9.5625 25.1574 8.875 24.4745 8.875 23.6053C8.875 22.9845 9.25 22.4257 9.8125 22.1774V19.0111H14.375V13.4856H10.75V10.9401H9.25C9 11.4989 8.4375 11.8714 7.8125 11.8714C6.9375 11.8714 6.25 11.1885 6.25 10.3193C6.25 9.45011 6.9375 8.76718 7.8125 8.76718C8.4375 8.76718 9 9.13969 9.25 9.69845H12V12.2439H14.375V4.3592C13.5625 2.93126 12.125 2 10.375 2C7.9375 2 5.875 3.92461 5.8125 6.40798C3.9375 7.27716 2.8125 9.45011 3.375 11.6231C1.625 12.1197 0.3125 13.5477 0.0625 15.3481H4.5C4.75 14.7894 5.3125 14.4169 5.9375 14.4169C6.8125 14.4169 7.5 15.0998 7.5 15.969C7.5 16.8381 6.75 17.5831 5.875 17.5831Z' fill='url(%23a)'/%3E%3Cpath d='M26.625 11.6231C27.1875 9.5122 26.0625 7.33925 24.1875 6.40798C24.125 3.92461 22.0625 2 19.625 2C17.9375 2 16.4375 2.93126 15.625 4.3592V7.77384H18.75C19 7.21508 19.5625 6.84257 20.1875 6.84257C21.0625 6.84257 21.75 7.5255 21.75 8.39468C21.75 9.26386 21.0625 9.94678 20.1875 9.94678C19.5625 9.94678 19 9.57428 18.75 9.01552H15.625V23.9157H18V20.9978H20.875C21.125 20.439 21.6875 20.0665 22.3125 20.0665C23.1875 20.0665 23.875 20.7494 23.875 21.6186C23.875 22.4878 23.1875 23.1707 22.3125 23.1707C21.6875 23.1707 21.125 22.7982 20.875 22.2395H19.25V25.1574H15.625V27.6408C16.4375 29.0687 17.875 30 19.625 30C22.125 30 24.125 28.0133 24.1875 25.592C26.0625 24.7228 27.1875 22.612 26.625 20.3769C26.8125 20.3149 26.9375 20.2528 27.125 20.1907V17.7073H21.875V14.6031C21.3125 14.3548 20.9375 13.796 20.9375 13.1752C20.9375 12.306 21.625 11.6231 22.5 11.6231C23.375 11.6231 24.0625 12.306 24.0625 13.1752C24.0625 13.796 23.6875 14.3548 23.125 14.6031V16.4656H28.3125V19.4457C29.375 18.7007 30 17.3969 30 16.031C30 13.9823 28.5625 12.1818 26.625 11.6231Z' fill='url(%23b)'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='2' x2='30' y2='2' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%236D7CFF'/%3E%3Cstop offset='1' stop-color='%23FF51FF'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='2' x2='30' y2='2' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%236D7CFF'/%3E%3Cstop offset='1' stop-color='%23FF51FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+  <!-- Docsify theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <style>
+    :root {
+      /* Brand colors */
+      --theme-color: #E930FF;
+      --theme-color-secondary: #7B2FBE;
+
+      /* Sidebar */
+      --sidebar-background: #faf7ff;
+      --sidebar-border-color: #e8dff2;
+      --sidebar-nav-link-color--active: #E930FF;
+      --sidebar-nav-link-border-color--active: #E930FF;
+      --sidebar-nav-link-font-weight--active: 600;
+
+      /* Content */
+      --heading-color: #1A1A2E;
+      --link-color: #7B2FBE;
+      --link-color--hover: #E930FF;
+
+      /* Code */
+      --code-theme-background: #f5f0ff;
+      --code-theme-text: #1A1A2E;
+      --code-inline-background: #f5f0ff;
+      --code-inline-color: #7B2FBE;
+
+      /* Cover */
+      --cover-background-color: #1A1A2E;
+      --cover-heading-color: #ffffff;
+      --cover-color: #e0d0f0;
+      --cover-blockquote-color: #c0b0d0;
+
+      /* Misc */
+      --blockquote-border-color: #E930FF;
+      --notice-tip-border-color: #E930FF;
+      --search-result-heading-color: #7B2FBE;
+      --search-result-keyword-color: #E930FF;
+    }
+
+    /* Logo in sidebar */
+    .app-name-link img {
+      max-width: 160px;
+    }
+
+    /* Sidebar heading style */
+    .sidebar-nav > ul > li > a {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: #6B7280;
+    }
+
+    /* Badge styles */
+    .badge {
+      display: inline-block;
+      padding: 0.15em 0.5em;
+      border-radius: 4px;
+      font-size: 0.75em;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+    .badge-block { background: #fee2e2; color: #dc2626; }
+    .badge-allow { background: #dcfce7; color: #16a34a; }
+    .badge-cycle1 { background: #dbeafe; color: #2563eb; }
+    .badge-cycle2 { background: #fee2e2; color: #dc2626; }
+    .badge-cycle3 { background: #fef3c7; color: #d97706; }
+    .badge-cycle4 { background: #f3e8ff; color: #7c3aed; }
+
+    /* Quality Gateway table styling */
+    .gateway-table td:first-child { font-weight: 600; }
+
+    /* Diagram box */
+    .flow-diagram {
+      background: #f5f0ff;
+      border: 1px solid #e8dff2;
+      border-radius: 8px;
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+    .flow-diagram pre {
+      margin: 0 !important;
+      background: transparent !important;
+    }
+
+    /* Tabs plugin override */
+    .docsify-tabs__tab--active {
+      border-bottom-color: #E930FF !important;
+      color: #E930FF !important;
+    }
+
+    /* Dark mode overrides */
+    body[data-theme="dark"] {
+      --sidebar-background: #1a1625;
+      --sidebar-border-color: #2d2640;
+      --heading-color: #f0e6ff;
+      --code-theme-background: #1a1625;
+      --code-theme-text: #e0d0f0;
+      --code-inline-background: #1a1625;
+      --blockquote-border-color: #E930FF;
+    }
+
+    /* Copy code button */
+    .docsify-copy-code-button {
+      font-size: 0.7em !important;
+    }
+
+    /* Landing page link in nav */
+    .app-nav a.landing-link {
+      background: linear-gradient(135deg, #7B2FBE, #E930FF);
+      color: #fff !important;
+      padding: 0.4em 1em;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85em;
+      text-decoration: none !important;
+    }
+    .app-nav a.landing-link:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Loading docs...</div>
+
+  <script>
+    window.$docsify = {
+      name: 'Quadruple Verification',
+      repo: 'https://github.com/kirollosatef/customgpt-claude-quadruple-verification',
+      loadSidebar: true,
+      loadNavbar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      homepage: 'README.md',
+
+      // Search plugin config
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Search docs...',
+        noData: 'No results found',
+        depth: 4,
+        hideOtherSidebarContent: false,
+      },
+
+      // Tabs plugin
+      tabs: {
+        persist: true,
+        sync: true,
+        theme: 'material',
+        tabComments: true,
+        tabHeadings: true,
+      },
+
+      // Pagination
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+
+      // Copy code
+      copyCode: {
+        buttonText: 'Copy',
+        successText: 'Copied!',
+      },
+
+      // Emoji
+      emoji: true,
+    };
+  </script>
+
+  <!-- Docsify core -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse@1/dist/docsify-sidebar-collapse.min.js"></script>
+
+  <!-- Syntax highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+
+  <!-- Dark mode toggle -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-darklight-theme.min.js"></script>
+</body>
+</html>

@@ -33,11 +33,17 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Prepare deployment
+        run: |
+          mkdir -p deploy
+          cp -r docs-site/* deploy/
+          cp docs-site/.nojekyll deploy/
+          mkdir -p deploy/landing
+          cp landing-page/index.html deploy/landing/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: 'landing-page'
+          path: 'deploy'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
