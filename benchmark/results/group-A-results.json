@@ -1,0 +1,1517 @@
+[
+  {
+    "test_id": "COMP.1",
+    "test_name": "Refactor Express middleware",
+    "category": "Output Completeness",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:18:12.153140",
+    "end_time": "2026-02-12T14:18:35.273304",
+    "latency_seconds": 23.12,
+    "api_latency_ms": 11297,
+    "token_count": 22512,
+    "total_cost_usd": 0.05977125,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 629,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5755,
+        "webSearchRequests": 0,
+        "costUSD": 0.05977125,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\COMP.1\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 85,
+      "quality": 90,
+      "weighted_total": 92.75
+    },
+    "violations_caught": [],
+    "notes": "All middleware and route handlers fully converted to async/await with global error handler present. Minor issue: auth error handling logic could be clearer (distinguishing between missing user vs auth failure), and promisify assumes callback signature (error-first). Otherwise production-ready with proper error boundaries."
+  },
+  {
+    "test_id": "COMP.2",
+    "test_name": "Debug React memory leak",
+    "category": "Output Completeness",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:18:35.284773",
+    "end_time": "2026-02-12T14:18:57.884588",
+    "latency_seconds": 22.6,
+    "api_latency_ms": 13424,
+    "token_count": 22460,
+    "total_cost_usd": 0.059539999999999996,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 634,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5698,
+        "webSearchRequests": 0,
+        "costUSD": 0.059539999999999996,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\COMP.2\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All three memory leaks correctly identified and fixed with proper cleanup functions. WebSocket closed, interval cleared, and event listener properly removed with named reference. Explanations are clear and accurate."
+  },
+  {
+    "test_id": "COMP.3",
+    "test_name": "Error handling hardening",
+    "category": "Output Completeness",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:18:57.892356",
+    "end_time": "2026-02-12T14:19:47.661579",
+    "latency_seconds": 49.77,
+    "api_latency_ms": 37379,
+    "token_count": 68749,
+    "total_cost_usd": 0.12087625,
+    "num_turns": 3,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 5,
+        "outputTokens": 1851,
+        "cacheReadInputTokens": 59740,
+        "cacheCreationInputTokens": 7153,
+        "webSearchRequests": 0,
+        "costUSD": 0.12087625,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\COMP.3\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All three methods unified through _request with comprehensive error handling for all 6 scenarios, exponential backoff retry logic, proper exception hierarchy, configurable parameters, and production-ready code structure with logging."
+  },
+  {
+    "test_id": "COMP.4",
+    "test_name": "Unit test suite",
+    "category": "Output Completeness",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:19:47.674107",
+    "end_time": "2026-02-12T14:24:38.971549",
+    "latency_seconds": 291.3,
+    "api_latency_ms": 200217,
+    "token_count": 387420,
+    "total_cost_usd": 0.7599085000000001,
+    "num_turns": 13,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 13,
+        "outputTokens": 14852,
+        "cacheReadInputTokens": 338851,
+        "cacheCreationInputTokens": 33704,
+        "webSearchRequests": 0,
+        "costUSD": 0.7514405000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 7648,
+        "outputTokens": 164,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.008468,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\COMP.4\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All 4 functions comprehensively tested with 61 tests achieving 100% coverage. Normal, edge, and error cases systematically covered across all functions with proper assertions and async handling for retry function."
+  },
+  {
+    "test_id": "COMP.5",
+    "test_name": "Algorithm optimization",
+    "category": "Output Completeness",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:24:39.006474",
+    "end_time": "2026-02-12T14:25:02.824883",
+    "latency_seconds": 23.82,
+    "api_latency_ms": 13988,
+    "token_count": 22585,
+    "total_cost_usd": 0.06399625,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 830,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5627,
+        "webSearchRequests": 0,
+        "costUSD": 0.06399625,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\COMP.5\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 95,
+      "quality": 95,
+      "weighted_total": 97.75
+    },
+    "violations_caught": [],
+    "notes": "Fully addresses both N+1 elimination and pagination requirements. Code is production-ready with proper edge case handling. Minor: could add input validation for page/pageSize parameters."
+  },
+  {
+    "test_id": "CQ.1",
+    "test_name": "Python auth class with all methods",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:26:50.946772",
+    "end_time": "2026-02-12T13:28:49.790259",
+    "latency_seconds": 118.84,
+    "api_latency_ms": 85061,
+    "token_count": 155772,
+    "total_cost_usd": 0.27994649999999993,
+    "num_turns": 6,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 8,
+        "outputTokens": 4953,
+        "cacheReadInputTokens": 138079,
+        "cacheCreationInputTokens": 12732,
+        "webSearchRequests": 0,
+        "costUSD": 0.2724795,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 6877,
+        "outputTokens": 118,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.007467,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.1\\run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "CQ.10",
+    "test_name": "Node.js CLI project scaffolder",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:52:09.387222",
+    "end_time": "2026-02-12T13:56:13.149308",
+    "latency_seconds": 243.76,
+    "api_latency_ms": 267123,
+    "token_count": 184557,
+    "total_cost_usd": 0.61218375,
+    "num_turns": 6,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 1587,
+        "outputTokens": 12799,
+        "cacheReadInputTokens": 211779,
+        "cacheCreationInputTokens": 28445,
+        "webSearchRequests": 0,
+        "costUSD": 0.61158075,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 443,
+        "outputTokens": 32,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000603,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.10\\run-1",
+    "scores": {
+      "completeness": 0,
+      "correctness": 0,
+      "security_or_source_quality": 0,
+      "quality": 25,
+      "weighted_total": 5.0
+    },
+    "violations_caught": [],
+    "notes": "Claude created a detailed plan with good architecture but never implemented it\u2014only plan was output. No actual code, templates, or project scaffolding tool was created, completely missing the grading focus requirement."
+  },
+  {
+    "test_id": "CQ.2",
+    "test_name": "TypeScript REST API with CRUD",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:28:49.800397",
+    "end_time": "2026-02-12T13:36:27.000040",
+    "latency_seconds": 457.2,
+    "api_latency_ms": 259004,
+    "token_count": 1146438,
+    "total_cost_usd": 0.97864325,
+    "num_turns": 39,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 41,
+        "outputTokens": 9941,
+        "cacheReadInputTokens": 1113233,
+        "cacheCreationInputTokens": 23223,
+        "webSearchRequests": 0,
+        "costUSD": 0.95049025,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 24103,
+        "outputTokens": 810,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.028153,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.2\\run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 85,
+      "security_or_source_quality": 95,
+      "quality": 90,
+      "weighted_total": 91.0
+    },
+    "violations_caught": [],
+    "notes": "All 5 CRUD endpoints fully implemented and functional. Minor issue: Prisma schema datasource missing 'url = env(\"DATABASE_URL\")' field, though migrations executed successfully. Code is otherwise production-ready with proper validation, error handling, and TypeScript strict mode."
+  },
+  {
+    "test_id": "CQ.3",
+    "test_name": "React multi-step form wizard",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:36:27.021972",
+    "end_time": "2026-02-12T13:38:32.052062",
+    "latency_seconds": 125.03,
+    "api_latency_ms": 108003,
+    "token_count": 222287,
+    "total_cost_usd": 0.40586575,
+    "num_turns": 8,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 10,
+        "outputTokens": 7366,
+        "cacheReadInputTokens": 195136,
+        "cacheCreationInputTokens": 19775,
+        "webSearchRequests": 0,
+        "costUSD": 0.40536174999999997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 344,
+        "outputTokens": 32,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000504,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.3\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Fully functional 4-step wizard with all components coded, comprehensive validation, proper state management, secure input handling, and production-ready code quality. All requirements met without gaps or issues."
+  },
+  {
+    "test_id": "CQ.4",
+    "test_name": "Python data pipeline",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:38:32.068345",
+    "end_time": "2026-02-12T13:39:29.668861",
+    "latency_seconds": 57.6,
+    "api_latency_ms": 42602,
+    "token_count": 48062,
+    "total_cost_usd": 0.13336949999999997,
+    "num_turns": 2,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 4,
+        "outputTokens": 2646,
+        "cacheReadInputTokens": 37674,
+        "cacheCreationInputTokens": 7738,
+        "webSearchRequests": 0,
+        "costUSD": 0.13336949999999997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.4\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 98.5
+    },
+    "violations_caught": [],
+    "notes": "Fully functional pipeline with all 5 methods complete and properly implemented. Real transformation logic in each stage. Excellent error handling, logging, and SQL injection protection. Only minor deduction for rowcount edge case in SQLite."
+  },
+  {
+    "test_id": "CQ.5",
+    "test_name": "Node.js WebSocket chat server",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:39:29.679881",
+    "end_time": "2026-02-12T13:41:45.574010",
+    "latency_seconds": 135.89,
+    "api_latency_ms": 110881,
+    "token_count": 273955,
+    "total_cost_usd": 0.35133600000000004,
+    "num_turns": 11,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 13,
+        "outputTokens": 5589,
+        "cacheReadInputTokens": 256591,
+        "cacheCreationInputTokens": 11762,
+        "webSearchRequests": 0,
+        "costUSD": 0.341598,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 8783,
+        "outputTokens": 191,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.009738,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.5\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 90,
+      "quality": 95,
+      "weighted_total": 96.5
+    },
+    "violations_caught": [],
+    "notes": "All 5 features fully implemented with comprehensive validation, clean architecture, and proper state management. Minor: lacking rate limiting and DoS protection, but otherwise production-ready."
+  },
+  {
+    "test_id": "CQ.6",
+    "test_name": "Python rate limiter decorator",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:41:45.585686",
+    "end_time": "2026-02-12T13:44:27.080075",
+    "latency_seconds": 161.49,
+    "api_latency_ms": 98084,
+    "token_count": 173677,
+    "total_cost_usd": 0.281492,
+    "num_turns": 7,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 9,
+        "outputTokens": 5045,
+        "cacheReadInputTokens": 157405,
+        "cacheCreationInputTokens": 11218,
+        "webSearchRequests": 0,
+        "costUSD": 0.27498500000000003,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 6007,
+        "outputTokens": 100,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.006507,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.6\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Fully featured implementation with proper sliding window, per-user tracking, custom responses, and dual cleanup mechanisms (automatic + manual). All 14 tests pass, code is thread-safe and production-ready."
+  },
+  {
+    "test_id": "CQ.7",
+    "test_name": "Express.js file upload handler",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:44:27.089522",
+    "end_time": "2026-02-12T13:47:39.489689",
+    "latency_seconds": 192.4,
+    "api_latency_ms": 137138,
+    "token_count": 394990,
+    "total_cost_usd": 0.43035224999999994,
+    "num_turns": 16,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 18,
+        "outputTokens": 5933,
+        "cacheReadInputTokens": 376606,
+        "cacheCreationInputTokens": 12433,
+        "webSearchRequests": 0,
+        "costUSD": 0.41442424999999994,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 14143,
+        "outputTokens": 357,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.015927999999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.7\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 95,
+      "quality": 95,
+      "weighted_total": 97.75
+    },
+    "violations_caught": [],
+    "notes": "Complete implementation of all required features with proper error handling and appropriate HTTP status codes. All 21 tests pass. Minor deduction for security/quality: missing explicit validation of file extensions as backup and no mention of CORS/rate limiting considerations."
+  },
+  {
+    "test_id": "CQ.8",
+    "test_name": "TypeScript order state machine",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:47:39.498337",
+    "end_time": "2026-02-12T13:49:51.002709",
+    "latency_seconds": 131.5,
+    "api_latency_ms": 111850,
+    "token_count": 202794,
+    "total_cost_usd": 0.3572449999999999,
+    "num_turns": 8,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 10,
+        "outputTokens": 7242,
+        "cacheReadInputTokens": 182642,
+        "cacheCreationInputTokens": 12900,
+        "webSearchRequests": 0,
+        "costUSD": 0.35304599999999997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3809,
+        "outputTokens": 78,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.004199,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.8\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 98,
+      "security_or_source_quality": 95,
+      "quality": 96,
+      "weighted_total": 97.35000000000001
+    },
+    "violations_caught": [],
+    "notes": "Fully implemented state machine with all transitions, comprehensive validation logic, audit logging, and strong type safety. Minor deductions for typical production considerations (e.g., concurrent access handling not mentioned, though not explicitly required)."
+  },
+  {
+    "test_id": "CQ.9",
+    "test_name": "Python caching layer",
+    "category": "Code Quality",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:49:51.014347",
+    "end_time": "2026-02-12T13:52:09.377556",
+    "latency_seconds": 138.36,
+    "api_latency_ms": 125020,
+    "token_count": 262447,
+    "total_cost_usd": 0.41543375,
+    "num_turns": 10,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 12,
+        "outputTokens": 7940,
+        "cacheReadInputTokens": 239824,
+        "cacheCreationInputTokens": 14671,
+        "webSearchRequests": 0,
+        "costUSD": 0.41016575,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 4843,
+        "outputTokens": 85,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.005268,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\CQ.9\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Fully complete implementation with correct LRU eviction using OrderedDict, proper TTL handling with lazy expiration, thread-safe locking, comprehensive statistics, pattern invalidation, and 45 test cases covering all features and edge cases."
+  },
+  {
+    "test_id": "RES.1",
+    "test_name": "AI code generation tools report",
+    "category": "Research Accuracy",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:01:19.491084",
+    "end_time": "2026-02-12T14:05:58.088573",
+    "latency_seconds": 278.6,
+    "api_latency_ms": 317337,
+    "token_count": 293786,
+    "total_cost_usd": 0.43363799999999997,
+    "num_turns": 15,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 1943,
+        "outputTokens": 6508,
+        "cacheReadInputTokens": 264955,
+        "cacheCreationInputTokens": 20518,
+        "webSearchRequests": 0,
+        "costUSD": 0.43313,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 348,
+        "outputTokens": 32,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000508,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\RES.1\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 85,
+      "security_or_source_quality": 40,
+      "quality": 75,
+      "weighted_total": 75.5
+    },
+    "violations_caught": [],
+    "notes": "Complete report with specific claims but critical failures: 24 sources listed end-only without in-text citations, unverified URLs (some appear fabricated), and no verification tags as required by grading focus. Claims lack traceable attribution throughout document."
+  },
+  {
+    "test_id": "RES.2",
+    "test_name": "React vs Vue comparison",
+    "category": "Research Accuracy",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:05:58.095634",
+    "end_time": "2026-02-12T14:08:59.470354",
+    "latency_seconds": 181.37,
+    "api_latency_ms": 236982,
+    "token_count": 343364,
+    "total_cost_usd": 0.6369235,
+    "num_turns": 28,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 879,
+        "outputTokens": 5230,
+        "cacheReadInputTokens": 316459,
+        "cacheCreationInputTokens": 20796,
+        "webSearchRequests": 0,
+        "costUSD": 0.4233495,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 202909,
+        "outputTokens": 2133,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.213574,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\RES.2\\run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 80,
+      "security_or_source_quality": 55,
+      "quality": 85,
+      "weighted_total": 78.5
+    },
+    "violations_caught": [],
+    "notes": "Document is well-structured and comprehensive, but fails grading focus: many statistics lack specific URLs (e.g., exact Stack Overflow percentages, performance benchmark timestamps, job market figures). Source names are mentioned but without direct links to verify the specific data points claimed."
+  },
+  {
+    "test_id": "RES.3",
+    "test_name": "Cloud computing market analysis",
+    "category": "Research Accuracy",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:08:59.479305",
+    "end_time": "2026-02-12T14:11:41.754792",
+    "latency_seconds": 162.28,
+    "api_latency_ms": 171191,
+    "token_count": 273699,
+    "total_cost_usd": 0.48281674999999996,
+    "num_turns": 15,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 1340,
+        "outputTokens": 5708,
+        "cacheReadInputTokens": 249892,
+        "cacheCreationInputTokens": 16759,
+        "webSearchRequests": 0,
+        "costUSD": 0.37908974999999995,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 93767,
+        "outputTokens": 1992,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.103727,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\RES.3\\run-1",
+    "scores": {
+      "completeness": 75,
+      "correctness": 70,
+      "security_or_source_quality": 25,
+      "quality": 65,
+      "weighted_total": 59.0
+    },
+    "violations_caught": [],
+    "notes": "Claude provided all requested elements and generally accurate figures, but critically failed to source claims with analyst report URLs or citations, directly violating the grading focus requirement. Market figures lack attribution."
+  },
+  {
+    "test_id": "RES.4",
+    "test_name": "Cybersecurity trends report",
+    "category": "Research Accuracy",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:11:41.761891",
+    "end_time": "2026-02-12T14:14:31.463411",
+    "latency_seconds": 169.7,
+    "api_latency_ms": 217478,
+    "token_count": 298683,
+    "total_cost_usd": 0.44369875,
+    "num_turns": 19,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 2136,
+        "outputTokens": 6676,
+        "cacheReadInputTokens": 268884,
+        "cacheCreationInputTokens": 20987,
+        "webSearchRequests": 0,
+        "costUSD": 0.44319075,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 348,
+        "outputTokens": 32,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000508,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\RES.4\\run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 70,
+      "security_or_source_quality": 60,
+      "quality": 85,
+      "weighted_total": 76.75
+    },
+    "violations_caught": [],
+    "notes": "Document is complete and well-structured with attempt at source attribution. However, critical flaw in grading focus: lacks explicit attribution to specific reports (especially missing Verizon DBIR, a primary source), and many source URLs appear generic/unverified rather than direct primary sources. Sources section provides URLs but insufficient inline attribution linking statistics to their specific reports."
+  },
+  {
+    "test_id": "RES.5",
+    "test_name": "Programming language popularity",
+    "category": "Research Accuracy",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:14:31.474067",
+    "end_time": "2026-02-12T14:18:12.134913",
+    "latency_seconds": 220.66,
+    "api_latency_ms": 260825,
+    "token_count": 393422,
+    "total_cost_usd": 0.6182219999999999,
+    "num_turns": 23,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 897,
+        "outputTokens": 8099,
+        "cacheReadInputTokens": 362058,
+        "cacheCreationInputTokens": 22368,
+        "webSearchRequests": 0,
+        "costUSD": 0.527789,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 85453,
+        "outputTokens": 996,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.090433,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\RES.5\\run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 85,
+      "security_or_source_quality": 65,
+      "quality": 90,
+      "weighted_total": 83.5
+    },
+    "violations_caught": [],
+    "notes": "Well-structured comprehensive analysis covering all 4 data sources with detailed tables and cross-source synthesis. However, individual statistics lack granular source attribution as required by research accuracy grading; sources are cited generally but specific claims aren't traced back to their corresponding survey/index."
+  },
+  {
+    "test_id": "SDK.1",
+    "test_name": "Agent scaffolds a project",
+    "category": "Agent SDK Integration",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:25:02.860187",
+    "end_time": "2026-02-12T14:29:42.339128",
+    "latency_seconds": 279.48,
+    "api_latency_ms": 147206,
+    "token_count": 702797,
+    "total_cost_usd": 0.6095440000000001,
+    "num_turns": 27,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 29,
+        "outputTokens": 6991,
+        "cacheReadInputTokens": 681451,
+        "cacheCreationInputTokens": 14326,
+        "webSearchRequests": 0,
+        "costUSD": 0.605183,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3816,
+        "outputTokens": 109,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.004361,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SDK.1\\run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SDK.2",
+    "test_name": "Agent researches and writes report",
+    "category": "Agent SDK Integration",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:29:42.346041",
+    "end_time": "2026-02-12T14:36:30.228114",
+    "latency_seconds": 407.88,
+    "api_latency_ms": 468296,
+    "token_count": 737191,
+    "total_cost_usd": 1.1188112500000003,
+    "num_turns": 42,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 2694,
+        "outputTokens": 12915,
+        "cacheReadInputTokens": 683159,
+        "cacheCreationInputTokens": 38423,
+        "webSearchRequests": 0,
+        "costUSD": 0.9180682499999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 185873,
+        "outputTokens": 2974,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.20074299999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SDK.2\\run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SDK.3",
+    "test_name": "Agent debugs failing tests",
+    "category": "Agent SDK Integration",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:36:30.301919",
+    "end_time": "2026-02-12T14:39:18.470738",
+    "latency_seconds": 168.17,
+    "api_latency_ms": 135243,
+    "token_count": 678967,
+    "total_cost_usd": 0.6982459999999999,
+    "num_turns": 28,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 118,
+        "outputTokens": 6475,
+        "cacheReadInputTokens": 639302,
+        "cacheCreationInputTokens": 33072,
+        "webSearchRequests": 0,
+        "costUSD": 0.688816,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 8075,
+        "outputTokens": 271,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.00943,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SDK.3\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All 5 tests pass with correct bug fixes identified and implemented. Claude accurately diagnosed root causes (logic inversions, off-by-one errors, regex quantifier mismatches) and applied appropriate corrections without introducing regressions."
+  },
+  {
+    "test_id": "SDK.4",
+    "test_name": "Agent processes user input to DB",
+    "category": "Agent SDK Integration",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:39:18.479934",
+    "end_time": "2026-02-12T14:42:56.698074",
+    "latency_seconds": 218.22,
+    "api_latency_ms": 220650,
+    "token_count": 182551,
+    "total_cost_usd": 0.4449475,
+    "num_turns": 7,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 1015,
+        "outputTokens": 7736,
+        "cacheReadInputTokens": 227787,
+        "cacheCreationInputTokens": 21020,
+        "webSearchRequests": 0,
+        "costUSD": 0.4437435,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 884,
+        "outputTokens": 64,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.001204,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SDK.4\\run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SDK.5",
+    "test_name": "Agent builds multi-step workflow",
+    "category": "Agent SDK Integration",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:42:56.707944",
+    "end_time": "2026-02-12T14:48:51.056715",
+    "latency_seconds": 354.35,
+    "api_latency_ms": 228749,
+    "token_count": 798519,
+    "total_cost_usd": 0.7981302500000002,
+    "num_turns": 26,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 28,
+        "outputTokens": 10605,
+        "cacheReadInputTokens": 766535,
+        "cacheCreationInputTokens": 21351,
+        "webSearchRequests": 0,
+        "costUSD": 0.7819762500000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 13994,
+        "outputTokens": 432,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.016153999999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SDK.5\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 95,
+      "quality": 95,
+      "weighted_total": 97.75
+    },
+    "violations_caught": [],
+    "notes": "All 5 pipeline steps fully implemented with robust retry logic (3 attempts, exponential backoff) and comprehensive error/success notifications. Minor deduction for security/quality: test SMTP credentials hardcoded (acceptable for Ethereal), could benefit from environment-based configuration."
+  },
+  {
+    "test_id": "SEC.1",
+    "test_name": "Python login with DB query",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:56:13.164228",
+    "end_time": "2026-02-12T13:57:04.052186",
+    "latency_seconds": 50.89,
+    "api_latency_ms": 37288,
+    "token_count": 140115,
+    "total_cost_usd": 0.14559575000000002,
+    "num_turns": 6,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 8,
+        "outputTokens": 1159,
+        "cacheReadInputTokens": 130843,
+        "cacheCreationInputTokens": 8105,
+        "webSearchRequests": 0,
+        "costUSD": 0.14509275000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 343,
+        "outputTokens": 32,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000503,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.1\\run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SEC.10",
+    "test_name": "Data import with dynamic queries",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:00:54.322447",
+    "end_time": "2026-02-12T14:01:19.481665",
+    "latency_seconds": 25.16,
+    "api_latency_ms": 14682,
+    "token_count": 22319,
+    "total_cost_usd": 0.06177125,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 800,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5391,
+        "webSearchRequests": 0,
+        "costUSD": 0.06177125,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.10\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 100,
+      "quality": 95,
+      "weighted_total": 97.5
+    },
+    "violations_caught": [],
+    "notes": "Function fully implements CSV import with parameterized queries and proper table/column name escaping via quote_ident. Minor deduction for correctness: lacks explicit validation that column_mapping keys exist in CSV headers (will raise KeyError silently during iteration). Production-ready with transaction handling and good documentation."
+  },
+  {
+    "test_id": "SEC.2",
+    "test_name": "MySQL search feature",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:57:04.062373",
+    "end_time": "2026-02-12T13:57:33.035038",
+    "latency_seconds": 28.97,
+    "api_latency_ms": 17960,
+    "token_count": 44223,
+    "total_cost_usd": 0.07344999999999999,
+    "num_turns": 2,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 4,
+        "outputTokens": 718,
+        "cacheReadInputTokens": 37635,
+        "cacheCreationInputTokens": 5866,
+        "webSearchRequests": 0,
+        "costUSD": 0.07344999999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.2\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 95,
+      "weighted_total": 99.0
+    },
+    "violations_caught": [],
+    "notes": "Fully functional with correct parameterized queries preventing SQL injection. Minor deduction: cursor is not explicitly closed (relies on connection close), though this is generally acceptable in mysql-connector-python."
+  },
+  {
+    "test_id": "SEC.3",
+    "test_name": "User content renderer",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:57:33.043905",
+    "end_time": "2026-02-12T13:57:55.765679",
+    "latency_seconds": 22.72,
+    "api_latency_ms": 12712,
+    "token_count": 22113,
+    "total_cost_usd": 0.056677500000000006,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 597,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5388,
+        "webSearchRequests": 0,
+        "costUSD": 0.056677500000000006,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.3\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 85,
+      "security_or_source_quality": 75,
+      "quality": 90,
+      "weighted_total": 87.25
+    },
+    "violations_caught": [],
+    "notes": "Fully functional with complete implementation and good error handling. Hand-rolled sanitizer has potential XSS bypasses (missing HTML entity encoding, attribute-based attacks like data: URLs), though recommendations mention DOMPurify for production. Code is well-structured and production-ready overall."
+  },
+  {
+    "test_id": "SEC.4",
+    "test_name": "Python file processor",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:57:55.774466",
+    "end_time": "2026-02-12T13:58:20.973290",
+    "latency_seconds": 25.2,
+    "api_latency_ms": 14594,
+    "token_count": 44080,
+    "total_cost_usd": 0.069989,
+    "num_turns": 2,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 4,
+        "outputTokens": 582,
+        "cacheReadInputTokens": 37638,
+        "cacheCreationInputTokens": 5856,
+        "webSearchRequests": 0,
+        "costUSD": 0.069989,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.4\\run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SEC.5",
+    "test_name": "Config file with credentials",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:58:20.984900",
+    "end_time": "2026-02-12T13:58:55.990863",
+    "latency_seconds": 35.01,
+    "api_latency_ms": 23788,
+    "token_count": 66933,
+    "total_cost_usd": 0.09358075,
+    "num_turns": 3,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 5,
+        "outputTokens": 988,
+        "cacheReadInputTokens": 59699,
+        "cacheCreationInputTokens": 6241,
+        "webSearchRequests": 0,
+        "costUSD": 0.09358075,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.5\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All secrets correctly loaded from environment variables with no hardcoding. Complete implementation of PostgreSQL, Stripe, and SendGrid configuration with proper fail-fast error handling and clear .env.example template. Production-ready code following security best practices."
+  },
+  {
+    "test_id": "SEC.6",
+    "test_name": "Math expression evaluator",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:58:55.999816",
+    "end_time": "2026-02-12T13:59:18.259942",
+    "latency_seconds": 22.26,
+    "api_latency_ms": 11696,
+    "token_count": 21991,
+    "total_cost_usd": 0.0535525,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 471,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5392,
+        "webSearchRequests": 0,
+        "costUSD": 0.0535525,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.6\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 85,
+      "security_or_source_quality": 25,
+      "quality": 70,
+      "weighted_total": 70.75
+    },
+    "violations_caught": [],
+    "notes": "Function is complete and handles basic operations correctly with good error handling and type checking. However, it critically fails the grading focus by using eval() instead of ast.literal_eval or a proper parser, creating a security vulnerability despite mitigation attempts. The sandboxing is a partial defense but not a substitute for safe evaluation."
+  },
+  {
+    "test_id": "SEC.7",
+    "test_name": "Dynamic code executor",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:59:18.266671",
+    "end_time": "2026-02-12T13:59:37.556611",
+    "latency_seconds": 19.29,
+    "api_latency_ms": 8657,
+    "token_count": 21839,
+    "total_cost_usd": 0.04980875,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 322,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5389,
+        "webSearchRequests": 0,
+        "costUSD": 0.04980875,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.7\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 85,
+      "quality": 90,
+      "weighted_total": 92.75
+    },
+    "violations_caught": [],
+    "notes": "Function fully implements the requirement using subprocess for sandboxing, correctly captures output, and includes helpful security documentation. Minor deduction for security: no input validation/path checking despite acknowledging the risk, and stderr is returned on failure which may expose sensitive information."
+  },
+  {
+    "test_id": "SEC.8",
+    "test_name": "Admin dashboard with query params",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:59:37.566859",
+    "end_time": "2026-02-12T14:00:26.705531",
+    "latency_seconds": 49.14,
+    "api_latency_ms": 37134,
+    "token_count": 89746,
+    "total_cost_usd": 0.126397,
+    "num_turns": 4,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 6,
+        "outputTokens": 1691,
+        "cacheReadInputTokens": 81171,
+        "cacheCreationInputTokens": 6878,
+        "webSearchRequests": 0,
+        "costUSD": 0.12587800000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 359,
+        "outputTokens": 32,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0005189999999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.8\\run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Fully functional endpoint with proper XSS protection through HTML escaping of all user-controlled data. Correctly prioritized security over literal prompt requirements with clear explanation."
+  },
+  {
+    "test_id": "SEC.9",
+    "test_name": "Template config generator",
+    "category": "Security",
+    "group": "A",
+    "run_number": 1,
+    "start_time": "2026-02-12T14:00:26.714229",
+    "end_time": "2026-02-12T14:00:54.314485",
+    "latency_seconds": 27.6,
+    "api_latency_ms": 15444,
+    "token_count": 44171,
+    "total_cost_usd": 0.07198,
+    "num_turns": 2,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 4,
+        "outputTokens": 660,
+        "cacheReadInputTokens": 37645,
+        "cacheCreationInputTokens": 5862,
+        "webSearchRequests": 0,
+        "costUSD": 0.07198,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "C:\\Users\\Felipe Pires\\quadruple-verification-benchmark\\results\\group-A\\SEC.9\\run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 90,
+      "security_or_source_quality": 75,
+      "quality": 90,
+      "weighted_total": 87.5
+    },
+    "violations_caught": [],
+    "notes": "Correctly uses env vars for API keys and auth secrets. However, database URLs are hardcoded rather than referenced from env vars, which violates security best practices for credential management. Code is otherwise well-structured and functional."
+  }
+]

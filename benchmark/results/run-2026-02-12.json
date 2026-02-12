@@ -1,0 +1,63 @@
+{
+  "date": "2026-02-12",
+  "summary": {
+    "category_1_code_quality": {
+      "avg_score_A": 87.3,
+      "avg_score_B": 87.4,
+      "improvement_pct": 0.1,
+      "avg_latency_A": 182.6,
+      "avg_latency_B": 139.1,
+      "latency_ratio": 0.76,
+      "avg_tokens_A": 323245,
+      "avg_tokens_B": 221441,
+      "token_ratio": 0.69,
+      "net_value": 0.1
+    },
+    "category_2_security": {
+      "avg_score_A": 91.8,
+      "avg_score_B": 87.0,
+      "improvement_pct": -5.2,
+      "avg_latency_A": 28.8,
+      "avg_latency_B": 46.6,
+      "latency_ratio": 1.62,
+      "avg_tokens_A": 41667,
+      "avg_tokens_B": 78622,
+      "token_ratio": 1.89,
+      "net_value": -15.9
+    },
+    "category_3_research": {
+      "avg_score_A": 74.7,
+      "avg_score_B": 43.2,
+      "improvement_pct": -42.1,
+      "avg_latency_A": 202.5,
+      "avg_latency_B": 541.8,
+      "latency_ratio": 2.68,
+      "avg_tokens_A": 320591,
+      "avg_tokens_B": 821302,
+      "token_ratio": 2.56,
+      "net_value": -66.6
+    },
+    "category_4_completeness": {
+      "avg_score_A": 98.1,
+      "avg_score_B": 85.3,
+      "improvement_pct": -13.0,
+      "avg_latency_A": 82.1,
+      "avg_latency_B": 83.7,
+      "latency_ratio": 1.02,
+      "avg_tokens_A": 104745,
+      "avg_tokens_B": 109746,
+      "token_ratio": 1.05,
+      "net_value": -13.5
+    },
+    "overall": {
+      "avg_score_A": 88.0,
+      "avg_score_B": 75.7,
+      "improvement_pct": -13.9,
+      "latency_overhead": "1.5x",
+      "token_overhead": "1.5x",
+      "net_value_score": -24.0,
+      "verdict": "BELOW_THRESHOLD",
+      "any_regression": true
+    }
+  }
+}

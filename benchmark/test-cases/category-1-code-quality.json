@@ -1,0 +1,87 @@
+﻿{
+  "category": "Code Quality",
+  "cycle_tested": 1,
+  "description": "Tests whether the plugin catches incomplete code patterns: TODO comments, empty function bodies, skeleton implementations, NotImplementedError stubs, and placeholder text.",
+  "test_cases": [
+    {
+      "id": "CQ.1",
+      "name": "Python auth class with all methods",
+      "prompt": "Create a Python class called AuthManager with these methods: login(username, password), logout(session_id), reset_password(email), validate_session(token), refresh_token(old_token). Each method should have full working logic using bcrypt for passwords and JWT for tokens. Do NOT leave any method unfinished.",
+      "expected_vanilla_issues": ["Likely to produce raise NotImplementedError in some methods", "May leave TODO comments for complex methods", "May use pass as placeholder in error handlers"],
+      "expected_plugin_catches": ["no-todo", "no-not-implemented", "no-empty-pass", "no-placeholder-text"],
+      "grading_focus": "All 5 methods must have real logic, not stubs"
+    },
+    {
+      "id": "CQ.2",
+      "name": "TypeScript REST API with CRUD",
+      "prompt": "Write a TypeScript Express REST API for a blog system with these endpoints: GET /posts, GET /posts/:id, POST /posts, PUT /posts/:id, DELETE /posts/:id. Include input validation, error handling, and database queries using Prisma ORM. Every endpoint must be fully implemented.",
+      "expected_vanilla_issues": ["May leave throw new Error('not implemented') in some handlers", "May include TODO comments for validation"],
+      "expected_plugin_catches": ["no-throw-not-impl", "no-todo", "no-placeholder-text"],
+      "grading_focus": "All 5 CRUD operations fully working with validation"
+    },
+    {
+      "id": "CQ.3",
+      "name": "React multi-step form wizard",
+      "prompt": "Implement a React component for a 4-step registration form wizard: Step 1 (personal info), Step 2 (address), Step 3 (payment), Step 4 (review and submit). Include form validation, back/next navigation, and state persistence between steps. All steps must be fully coded.",
+      "expected_vanilla_issues": ["May leave later steps as skeleton components", "May add TODO for validation logic"],
+      "expected_plugin_catches": ["no-todo", "no-placeholder-text"],
+      "grading_focus": "All 4 steps fully rendered with validation and navigation"
+    },
+    {
+      "id": "CQ.4",
+      "name": "Python data pipeline",
+      "prompt": "Create a Python data pipeline class with methods: read_csv(path), validate_schema(df), transform_data(df), clean_nulls(df), write_to_database(df, connection_string). Include proper error handling and logging in every method. No method should be left incomplete.",
+      "expected_vanilla_issues": ["May use pass in exception handlers", "May raise NotImplementedError for complex transforms"],
+      "expected_plugin_catches": ["no-empty-pass", "no-not-implemented", "no-ellipsis"],
+      "grading_focus": "All pipeline stages have real transformation logic"
+    },
+    {
+      "id": "CQ.5",
+      "name": "Node.js WebSocket chat server",
+      "prompt": "Write a Node.js WebSocket chat server using the ws library with: room creation/joining, user nickname management, message broadcasting to rooms, private messaging between users, and message history (last 50 messages per room stored in memory). Implement all features completely.",
+      "expected_vanilla_issues": ["May leave private messaging as TODO", "May have empty handler bodies for edge cases"],
+      "expected_plugin_catches": ["no-todo", "no-placeholder-text"],
+      "grading_focus": "All 5 features working: rooms, nicknames, broadcast, private msg, history"
+    },
+    {
+      "id": "CQ.6",
+      "name": "Python rate limiter decorator",
+      "prompt": "Implement a Python decorator called @rate_limit that supports: configurable max requests per time window, sliding window algorithm, per-user tracking by IP or API key, custom exceeded response, and cleanup of expired entries. Write the complete implementation with all features.",
+      "expected_vanilla_issues": ["May use ellipsis (...) for complex sliding window logic", "May leave cleanup as stub"],
+      "expected_plugin_catches": ["no-ellipsis", "no-placeholder-text", "no-not-implemented"],
+      "grading_focus": "Sliding window algorithm fully coded with cleanup"
+    },
+    {
+      "id": "CQ.7",
+      "name": "Express.js file upload handler",
+      "prompt": "Create an Express.js file upload endpoint that: validates file type (images only), checks file size (max 5MB), generates unique filenames, saves to local disk, creates thumbnails using sharp, and returns upload metadata. All processing steps must be implemented.",
+      "expected_vanilla_issues": ["May leave thumbnail generation as TODO", "May have placeholder validation"],
+      "expected_plugin_catches": ["no-todo", "no-placeholder-text"],
+      "grading_focus": "Full upload pipeline including thumbnail generation"
+    },
+    {
+      "id": "CQ.8",
+      "name": "TypeScript order state machine",
+      "prompt": "Write a TypeScript state machine for order processing with states: DRAFT, SUBMITTED, PAYMENT_PENDING, PAID, PROCESSING, SHIPPED, DELIVERED, CANCELLED, REFUNDED. Include transition validation, event handlers for each transition, and an audit log. Every state transition must have real logic.",
+      "expected_vanilla_issues": ["May use throw new Error('not implemented') for complex transitions", "May leave audit logging as FIXME"],
+      "expected_plugin_catches": ["no-throw-not-impl", "no-todo"],
+      "grading_focus": "All state transitions implemented with validation and audit"
+    },
+    {
+      "id": "CQ.9",
+      "name": "Python caching layer",
+      "prompt": "Implement a Python caching class with: get/set/delete operations, TTL-based expiration, LRU eviction when max size reached, cache statistics (hits/misses/evictions), and a method to invalidate by pattern. All features must be fully working.",
+      "expected_vanilla_issues": ["May use pass in eviction method", "LRU logic may be left as TODO"],
+      "expected_plugin_catches": ["no-empty-pass", "no-todo", "no-not-implemented"],
+      "grading_focus": "LRU eviction and TTL expiration fully implemented"
+    },
+    {
+      "id": "CQ.10",
+      "name": "Node.js CLI project scaffolder",
+      "prompt": "Create a Node.js CLI tool using commander that scaffolds projects. It should support: selecting a template (react, express, fullstack), generating package.json with dependencies, creating directory structure, writing config files (.eslintrc, tsconfig, .gitignore), and initializing git. All templates must be fully coded.",
+      "expected_vanilla_issues": ["May leave some templates as skeleton", "Config file generation may be incomplete"],
+      "expected_plugin_catches": ["no-placeholder-text", "no-todo"],
+      "grading_focus": "All 3 templates generate complete project structures"
+    }
+  ]
+}

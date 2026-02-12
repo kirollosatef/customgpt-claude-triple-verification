@@ -1,0 +1,72 @@
+{
+  "category": "Output Completeness",
+  "cycle_tested": 3,
+  "description": "End-to-end tasks where the Stop prompt (Cycle 3 self-review) should enforce quality review and prevent incomplete deliverables.",
+  "test_cases": [
+    {
+      "id": "COMP.1",
+      "name": "Refactor Express middleware",
+      "prompt": "Refactor this Express.js middleware stack to use async/await and proper error handling. Currently it uses nested callbacks. Convert ALL middleware functions, not just some of them.\n\nHere is the code to refactor:\n\nconst express = require(\"express\");\nconst app = express();\n\napp.use(function(req, res, next) {\n  getUser(req.headers.token, function(err, user) {\n    if (err) { res.status(401).send(\"Unauthorized\"); return; }\n    req.user = user;\n    checkPermissions(user.role, req.path, function(err, allowed) {\n      if (err) { res.status(500).send(\"Error\"); return; }\n      if (!allowed) { res.status(403).send(\"Forbidden\"); return; }\n      logAccess(user.id, req.path, function(err) {\n        if (err) console.log(\"log failed\");\n        next();\n      });\n    });\n  });\n});\n\napp.get(\"/data\", function(req, res) {\n  fetchData(req.query.type, function(err, data) {\n    if (err) { res.status(500).send(\"Error\"); return; }\n    transformData(data, req.user.preferences, function(err, result) {\n      if (err) { res.status(500).send(\"Transform error\"); return; }\n      cacheResult(req.path, result, function(err) {\n        if (err) console.log(\"cache failed\");\n        res.json(result);\n      });\n    });\n  });\n});\n\nConvert every callback to async/await. Add try/catch error handling. Create a global error handler middleware.",
+      "expected_vanilla_issues": [
+        "May convert only the first middleware and skip the route handler",
+        "May leave error handler as bare skeleton"
+      ],
+      "expected_plugin_catches": [
+        "Cycle 3 stop prompt catches incomplete refactoring"
+      ],
+      "grading_focus": "Both middleware and route handler fully converted, global error handler present"
+    },
+    {
+      "id": "COMP.2",
+      "name": "Debug React memory leak",
+      "prompt": "Debug and fix this React component that has a memory leak. The component subscribes to a WebSocket but never cleans up, and it has a setInterval that persists after unmount. Fix ALL the issues, not just one.\n\nfunction LiveDashboard({ userId }) {\n  const [data, setData] = useState([]);\n  const [connected, setConnected] = useState(false);\n\n  useEffect(() => {\n    const ws = new WebSocket(\"wss://api.example.com/live\");\n    ws.onopen = () => setConnected(true);\n    ws.onmessage = (event) => {\n      setData(prev => [...prev, JSON.parse(event.data)]);\n    };\n    ws.onerror = () => setConnected(false);\n  }, []);\n\n  useEffect(() => {\n    setInterval(() => {\n      fetch(\"/api/stats/\" + userId).then(r => r.json()).then(stats => {\n        setData(prev => [...prev, stats]);\n      });\n    }, 5000);\n  }, [userId]);\n\n  useEffect(() => {\n    document.addEventListener(\"visibilitychange\", () => {\n      if (document.hidden) console.log(\"tab hidden\");\n    });\n  }, []);\n\n  return <div>{connected ? \"Connected\" : \"Disconnected\"} - {data.length} items</div>;\n}\n\nFix all three memory leaks and explain each fix.",
+      "expected_vanilla_issues": [
+        "May fix WebSocket but forget the interval or event listener",
+        "May explain issues without actually fixing the code"
+      ],
+      "expected_plugin_catches": [
+        "Cycle 3 stop prompt catches if not all leaks are fixed"
+      ],
+      "grading_focus": "All 3 leaks fixed: WebSocket cleanup, interval cleared, event listener removed"
+    },
+    {
+      "id": "COMP.3",
+      "name": "Error handling hardening",
+      "prompt": "Add comprehensive error handling to this Python API client. Handle ALL of these: network timeouts, HTTP errors (4xx, 5xx), JSON parse failures, rate limiting (429), authentication expiry, and connection refused. Add retry logic with exponential backoff.\n\nimport requests\n\nclass APIClient:\n    def __init__(self, base_url, api_key):\n        self.base_url = base_url\n        self.api_key = api_key\n\n    def get(self, endpoint):\n        response = requests.get(f\"{self.base_url}/{endpoint}\", headers={\"Authorization\": f\"Bearer {self.api_key}\"})\n        return response.json()\n\n    def post(self, endpoint, data):\n        response = requests.post(f\"{self.base_url}/{endpoint}\", json=data, headers={\"Authorization\": f\"Bearer {self.api_key}\"})\n        return response.json()\n\n    def delete(self, endpoint):\n        response = requests.delete(f\"{self.base_url}/{endpoint}\", headers={\"Authorization\": f\"Bearer {self.api_key}\"})\n        return response.status_code\n\nHarden ALL three methods with the same level of error handling.",
+      "expected_vanilla_issues": [
+        "May add error handling to get() but leave post() and delete() unchanged",
+        "May skip retry logic"
+      ],
+      "expected_plugin_catches": [
+        "Cycle 3 stop prompt catches incomplete hardening"
+      ],
+      "grading_focus": "All 3 methods have full error handling with retry and backoff"
+    },
+    {
+      "id": "COMP.4",
+      "name": "Unit test suite",
+      "prompt": "Write a complete unit test suite for this utility library. Cover ALL functions with tests for normal cases, edge cases, and error cases. Achieve high branch coverage.\n\nfunction slugify(text) {\n  return text.toString().toLowerCase().trim()\n    .replace(/\\s+/g, \"-\").replace(/[^\\w\\-]+/g, \"\").replace(/\\-\\-+/g, \"-\");\n}\n\nfunction truncate(str, maxLen, suffix = \"...\") {\n  if (str.length <= maxLen) return str;\n  return str.slice(0, maxLen - suffix.length) + suffix;\n}\n\nfunction deepMerge(target, source) {\n  const result = { ...target };\n  for (const key of Object.keys(source)) {\n    if (source[key] && typeof source[key] === \"object\" && !Array.isArray(source[key])) {\n      result[key] = deepMerge(result[key] || {}, source[key]);\n    } else {\n      result[key] = source[key];\n    }\n  }\n  return result;\n}\n\nfunction retry(fn, maxAttempts = 3, delay = 1000) {\n  return async function(...args) {\n    for (let i = 0; i < maxAttempts; i++) {\n      try { return await fn(...args); }\n      catch (err) { if (i === maxAttempts - 1) throw err; await new Promise(r => setTimeout(r, delay)); }\n    }\n  };\n}\n\nWrite tests for ALL 4 functions. Do not skip any.",
+      "expected_vanilla_issues": [
+        "May write tests for slugify and truncate but skip deepMerge or retry",
+        "May test only happy path"
+      ],
+      "expected_plugin_catches": [
+        "Cycle 3 stop prompt catches if any function lacks tests"
+      ],
+      "grading_focus": "All 4 functions tested with normal, edge, and error cases"
+    },
+    {
+      "id": "COMP.5",
+      "name": "Algorithm optimization",
+      "prompt": "Optimize this database query function that has an N+1 problem. The function loads users and their orders, then for each order loads the items. Rewrite it to use efficient batch queries instead of loops. Also add pagination support.\n\nasync function getUserOrderSummary(db) {\n  const users = await db.query(\"SELECT * FROM users WHERE active = true\");\n  const results = [];\n\n  for (const user of users) {\n    const orders = await db.query(\"SELECT * FROM orders WHERE user_id = ?\", [user.id]);\n    const userOrders = [];\n\n    for (const order of orders) {\n      const items = await db.query(\"SELECT * FROM order_items WHERE order_id = ?\", [order.id]);\n      userOrders.push({ ...order, items, total: items.reduce((sum, i) => sum + i.price * i.quantity, 0) });\n    }\n\n    results.push({ ...user, orders: userOrders, orderCount: userOrders.length });\n  }\n\n  return results;\n}\n\nFix the N+1 problem AND add pagination (page, pageSize params). Both changes are required.",
+      "expected_vanilla_issues": [
+        "May fix N+1 but skip pagination",
+        "May add pagination but still have N+1 in the item loading"
+      ],
+      "expected_plugin_catches": [
+        "Cycle 3 stop prompt catches missing pagination or remaining N+1"
+      ],
+      "grading_focus": "N+1 fully eliminated with batch queries AND pagination working"
+    }
+  ]
+}

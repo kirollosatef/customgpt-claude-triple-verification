@@ -1,0 +1,98 @@
+{
+  "run_id": "run-YYYY-MM-DD",
+  "date": "",
+  "mode": "quick",
+  "results": {
+    "category_1_code_quality": {
+      "control": [],
+      "treatment": [],
+      "summary": {
+        "avg_score_A": null,
+        "avg_score_B": null,
+        "improvement_pct": null,
+        "avg_latency_A": null,
+        "avg_latency_B": null,
+        "latency_ratio": null,
+        "avg_tokens_A": null,
+        "avg_tokens_B": null,
+        "token_ratio": null,
+        "net_value": null
+      }
+    },
+    "category_2_security": {
+      "control": [],
+      "treatment": [],
+      "summary": {
+        "avg_score_A": null,
+        "avg_score_B": null,
+        "improvement_pct": null,
+        "avg_latency_A": null,
+        "avg_latency_B": null,
+        "latency_ratio": null,
+        "avg_tokens_A": null,
+        "avg_tokens_B": null,
+        "token_ratio": null,
+        "net_value": null
+      }
+    },
+    "category_3_research": {
+      "control": [],
+      "treatment": [],
+      "summary": {
+        "avg_score_A": null,
+        "avg_score_B": null,
+        "improvement_pct": null,
+        "avg_latency_A": null,
+        "avg_latency_B": null,
+        "latency_ratio": null,
+        "avg_tokens_A": null,
+        "avg_tokens_B": null,
+        "token_ratio": null,
+        "net_value": null
+      }
+    },
+    "category_4_completeness": {
+      "control": [],
+      "treatment": [],
+      "summary": {
+        "avg_score_A": null,
+        "avg_score_B": null,
+        "improvement_pct": null,
+        "avg_latency_A": null,
+        "avg_latency_B": null,
+        "latency_ratio": null,
+        "avg_tokens_A": null,
+        "avg_tokens_B": null,
+        "token_ratio": null,
+        "net_value": null
+      }
+    },
+    "overall": {
+      "avg_score_A": null,
+      "avg_score_B": null,
+      "improvement_pct": null,
+      "latency_overhead": null,
+      "token_overhead": null,
+      "net_value_score": null,
+      "pass_fail": null
+    }
+  },
+  "per_test_results_template": {
+    "test_id": "",
+    "group": "A or B",
+    "run_number": 1,
+    "start_time": "",
+    "end_time": "",
+    "latency_seconds": null,
+    "token_count": null,
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  }
+}
