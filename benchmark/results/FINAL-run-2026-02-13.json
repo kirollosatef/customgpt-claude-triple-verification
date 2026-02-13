@@ -478,12 +478,32 @@
     "safety_gap": -15,
     "note": "Plugin code mentions eval/exec/innerHTML more often in explanatory comments (e.g., 'this avoids eval()'), triggering false-positive safety pattern matches. Not actual unsafe code usage."
   },
+  "key_insight_sdk4_plan_mode_prevention": {
+    "title": "Plugin verification hooks prevent plan-only output on complex agentic tasks",
+    "test": "SDK.4 — Agent processes user input to DB",
+    "description": "This is the most significant finding from the benchmark. Vanilla Claude Code (Group A) entered plan mode and produced only a plan summary — no actual code was written, no files created. It spent 318s and 169K tokens describing what it would build, then stopped to await user approval. The plugin version (Group B) actually implemented the full solution in 312s.",
+    "vanilla_behavior": {
+      "score": 0,
+      "latency_s": 318.31,
+      "tokens": 169416,
+      "grader_note": "Output contains only a plan description without any actual implementation code. No files were created, no code was written - just a summary of what would be implemented upon approval."
+    },
+    "plugin_behavior": {
+      "score": 100,
+      "latency_s": 312.32,
+      "tokens": 194458,
+      "grader_note": "Fully implements all requirements with bcrypt password hashing, bleach HTML sanitization, parameterized SQL queries preventing injection, comprehensive validation, and production-grade error handling. No hardcoded secrets, all security best practices followed."
+    },
+    "why_it_matters": "Claude Code's default behavior on complex tasks can be to propose a plan and wait for approval rather than executing. The plugin's stop-gate verification hooks detect when Claude hasn't actually produced deliverables and push it to complete the work. This is the plugin's strongest value proposition — ensuring Claude follows through on complex multi-step tasks instead of stopping at the planning phase.",
+    "impact_on_scores": "This single test swung the Agent SDK category average from 75.0 (A) to 98.8 (B), a +31.8% improvement. Without SDK.4, the remaining 3 matched SDK tests average 100.0 (A) vs 98.4 (B). The entire Agent SDK category win is driven by this one behavioral difference.",
+    "implications_for_plugin_design": "The stop-gate verification is the plugin's highest-value hook. It catches the 'plan-only' failure mode that vanilla Claude Code exhibits on agentic tasks. This suggests the plugin should prioritize stop-gate reliability over pre-tool-use gates, which add latency without measurable quality improvement on most tasks."
+  },
   "key_findings": [
+    "CRITICAL: Plugin verification hooks prevent Claude from stopping at plan-only output on complex agentic tasks (SDK.4: vanilla scored 0, plugin scored 100)",
     "Plugin improves quality by +4.4% overall (92.1 → 96.1), with the biggest gain in Agent SDK tasks (+31.8%)",
     "Plugin adds 1.5x latency overhead and 1.3x token overhead, pushing net value below the 14% threshold",
     "3 of 5 research tasks timed out with plugin (3.37x latency on those that completed) — verification loops are too expensive for long-running research",
     "Adversarial category entirely ungraded (Sonnet failed to parse all 10 Group A adversarial outputs)",
-    "Plugin prevented vanilla's SDK.4 failure (vanilla produced plan-only, plugin produced working code)",
     "Code Quality and Security are statistically tied between groups",
     "SEC.6 regression is an execution error (plugin hooks caused failure), not a quality issue"
   ],
