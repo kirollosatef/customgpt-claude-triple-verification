@@ -1,9 +1,9 @@
 # Quadruple Verification Plugin - Benchmark Results (Matched Tests Only)
 
-**Plugin:** customgpt-claude-quadruple-verification v1.1.0  
-**Run Date:** February 12, 2026  
-**Model:** Claude Opus 4.6 (claude-opus-4-6)  
-**Platform:** Windows 11, Claude Code CLI  
+**Plugin:** customgpt-claude-quadruple-verification v1.1.0
+**Run Date:** February 12, 2026
+**Model:** Claude Opus 4.6 (claude-opus-4-6)
+**Platform:** Windows 11, Claude Code CLI
 
 > This report includes **only matched tests** -- tests that were successfully graded in both Group A (Vanilla) and Group B (Plugin). Timeouts, grading failures, and unscored tests are excluded for a fair apples-to-apples comparison.
 
@@ -34,12 +34,12 @@
 ### Scoring Rubric
 
 Each test graded on 4 dimensions (0-100):
-- **Completeness (C):** 30% weight
-- **Correctness (R):** 25% weight
+- **Completeness (C):** 25% weight
+- **Correctness (R):** 30% weight
 - **Security / Source Quality (S):** 25% weight
 - **Code Quality (Q):** 20% weight
 
-**Weighted Total** = C x 0.30 + R x 0.25 + S x 0.25 + Q x 0.20
+**Weighted Total** = C x 0.25 + R x 0.30 + S x 0.25 + Q x 0.20
 
 ---
 
@@ -200,7 +200,7 @@ Latency: 354.4s vs 183.9s | Cost: $0.80 vs $0.50
 ## Key Observations
 
 ### 1. Timeouts Are the Biggest Issue (Not Quality)
-The plugin's primary problem is **timeout failures, not output quality degradation**. Of the 11 excluded tests, 4 were hard timeouts (600s limit) -- all in Group B (plugin). The verification hooks add per-turn overhead that compounds on long-running research and agent tasks, pushing them past the time limit. When the plugin completes within the timeout, output quality is on par with vanilla. **Fixing timeout behavior is the single highest-impact improvement for the plugin.**
+The plugin's primary problem is **timeout failures, not output quality degradation**. Of the 11 excluded tests, 4 were hard timeouts (600s limit) -- all in Group B (plugin). The verification hooks add per-turn overhead that compounds on long-running research and agent tasks, pushing them past the time limit. When the plugin completes within the timeout, the quality delta is small (-5.1% overall), with some categories showing near-parity and others showing larger gaps. **Fixing timeout behavior is the single highest-impact improvement for the plugin.**
 
 ### 2. Plugin Is Essentially Neutral on Code Quality
 On 8 matched code quality tests, the delta is -0.8%. The plugin does not degrade code output for well-defined implementation tasks.
@@ -212,7 +212,7 @@ On 7 matched security tests, the plugin scored +1.3% higher. The notable win was
 Both matched SDK tests (SDK.3, SDK.5) scored identically at 100.0 and 97.75 respectively. The plugin adds no degradation to agent workflows that complete within timeout.
 
 ### 5. Execution Failures, Not Quality Failures
-The 11 excluded tests were timeouts (4), grading failures (7), or empty outputs -- not quality issues. The plugin needs timeout optimization for long-running tasks, but when it completes, the output quality matches vanilla.
+The 11 excluded tests were timeouts (4), grading failures (7), or empty outputs -- not quality issues. The plugin needs timeout optimization for long-running tasks, but when it completes, the output quality gap is modest (vanilla won 12 of 24 matched tests vs 4 plugin wins).
 
 ---
 

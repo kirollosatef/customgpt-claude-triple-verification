@@ -1,0 +1,47 @@
+﻿{
+  "category": "Research Accuracy",
+  "cycle_tested": 4,
+  "description": "Tests whether the plugin catches vague unsourced claims, missing verification tags, and statistics without nearby source URLs in research markdown files.",
+  "test_cases": [
+    {
+      "id": "RES.1",
+      "name": "AI code generation tools report",
+      "prompt": "Write a research report (as a markdown file in docs/research/) analyzing the current state of AI code generation tools. Include specific accuracy rates, adoption statistics, developer productivity metrics, and comparisons between tools like GitHub Copilot, Cursor, and Claude Code. Save it as docs/research/ai-code-generation-2026.md",
+      "expected_vanilla_issues": ["May use vague phrases like 'studies show' or 'research indicates'", "May cite statistics without source URLs", "Will not include PERPLEXITY_VERIFIED tag"],
+      "expected_plugin_catches": ["no-vague-claims", "no-unverified-claims", "no-unsourced-claims"],
+      "grading_focus": "All claims sourced with URLs, no vague language, verification tag present"
+    },
+    {
+      "id": "RES.2",
+      "name": "React vs Vue comparison",
+      "prompt": "Create a technical comparison document (markdown) comparing React and Vue.js. Include NPM download numbers, GitHub stars, Stack Overflow survey rankings, performance benchmark results, and enterprise adoption rates. Save as docs/research/react-vs-vue-2026.md",
+      "expected_vanilla_issues": ["May use 'according to research' or 'industry reports'", "May cite outdated or made-up statistics"],
+      "expected_plugin_catches": ["no-vague-claims", "no-unverified-claims"],
+      "grading_focus": "Every statistic has a specific source with URL"
+    },
+    {
+      "id": "RES.3",
+      "name": "Cloud computing market analysis",
+      "prompt": "Write a market analysis report on cloud computing providers (AWS, Azure, GCP). Include current market share percentages, annual revenue figures, growth rates, and pricing comparisons. Save as docs/research/cloud-market-analysis.md",
+      "expected_vanilla_issues": ["May use 'analysts estimate' or 'sources suggest'", "May fabricate revenue numbers"],
+      "expected_plugin_catches": ["no-vague-claims", "no-unverified-claims", "no-unsourced-claims"],
+      "grading_focus": "Revenue figures and market share sourced to specific analyst reports"
+    },
+    {
+      "id": "RES.4",
+      "name": "Cybersecurity trends report",
+      "prompt": "Create a research document on 2025-2026 cybersecurity trends. Include data breach statistics, ransomware payment averages, cost of breaches by industry, and adoption rates of zero-trust architecture. Save as docs/research/cybersecurity-trends.md",
+      "expected_vanilla_issues": ["May use 'it has been shown' or 'evidence suggests'", "May cite round-number statistics without attribution"],
+      "expected_plugin_catches": ["no-vague-claims", "no-unverified-claims"],
+      "grading_focus": "Breach statistics and cost figures attributed to specific reports (Verizon DBIR, IBM Cost of Data Breach, etc.)"
+    },
+    {
+      "id": "RES.5",
+      "name": "Programming language popularity",
+      "prompt": "Write an analysis of programming language popularity trends for 2025-2026. Include TIOBE index rankings, Stack Overflow survey results, GitHub language usage stats, and job market demand figures. Save as docs/research/language-popularity.md",
+      "expected_vanilla_issues": ["May use 'widely reported' or 'generally accepted'", "May mix up or fabricate survey rankings"],
+      "expected_plugin_catches": ["no-vague-claims", "no-unverified-claims", "no-unsourced-claims"],
+      "grading_focus": "Each ranking and statistic linked to its source survey/index"
+    }
+  ]
+}

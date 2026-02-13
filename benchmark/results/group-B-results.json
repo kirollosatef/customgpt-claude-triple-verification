@@ -1,0 +1,1563 @@
+[
+  {
+    "test_id": "COMP.1",
+    "test_name": "Refactor Express middleware",
+    "category": "Output Completeness",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:54:36.301911",
+    "end_time": "2026-02-12T12:55:04.042922",
+    "latency_seconds": 27.74,
+    "api_latency_ms": 14629,
+    "token_count": 22566,
+    "total_cost_usd": 0.0679466,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 683,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5755,
+        "webSearchRequests": 0,
+        "costUSD": 0.06112125,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 128,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3751,
+        "webSearchRequests": 0,
+        "costUSD": 0.00682535,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/COMP.1/run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 85,
+      "security_or_source_quality": 75,
+      "quality": 85,
+      "weighted_total": 85.0
+    },
+    "violations_caught": [],
+    "notes": "All middleware and route handler converted to async/await with global error handler present. Minor issues: auth error handling logic is fragile (checks !req.user after catch, but getUser could fail for reasons other than missing token), and the error handler lacks differentiation between error types."
+  },
+  {
+    "test_id": "COMP.2",
+    "test_name": "Debug React memory leak",
+    "category": "Output Completeness",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:55:04.061139",
+    "end_time": "2026-02-12T12:55:29.642378",
+    "latency_seconds": 25.58,
+    "api_latency_ms": 14005,
+    "token_count": 22456,
+    "total_cost_usd": 0.06552785,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 630,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5698,
+        "webSearchRequests": 0,
+        "costUSD": 0.05944,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 8,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3641,
+        "webSearchRequests": 0,
+        "costUSD": 0.00608785,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/COMP.2/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 90,
+      "quality": 95,
+      "weighted_total": 96.5
+    },
+    "violations_caught": [],
+    "notes": "All three memory leaks are correctly fixed with proper cleanup functions. The code is production-ready and handles all edge cases. Minor deduction for security due to potential fetch errors in Fix 2 (no error handling) and dependency array in Fix 2 could cause unnecessary refetches if userId changes frequently."
+  },
+  {
+    "test_id": "COMP.3",
+    "test_name": "Error handling hardening",
+    "category": "Output Completeness",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:55:29.766898",
+    "end_time": "2026-02-12T12:56:27.166890",
+    "latency_seconds": 57.4,
+    "api_latency_ms": 41785,
+    "token_count": 69581,
+    "total_cost_usd": 0.1404491,
+    "num_turns": 4,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 5,
+        "outputTokens": 2178,
+        "cacheReadInputTokens": 59872,
+        "cacheCreationInputTokens": 7526,
+        "webSearchRequests": 0,
+        "costUSD": 0.1314485,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 347,
+        "outputTokens": 122,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 5240,
+        "webSearchRequests": 0,
+        "costUSD": 0.0090006,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/COMP.3/run-1",
+    "scores": {
+      "completeness": 45,
+      "correctness": 50,
+      "security_or_source_quality": 70,
+      "quality": 55,
+      "weighted_total": 54.75
+    },
+    "violations_caught": [],
+    "notes": "Output provides sound architectural design and error handling strategy, but presents only documentation/tables rather than actual implemented code. The three methods lack visible implementation details showing retry logic, exponential backoff, and exception handling actually coded in the get/post/delete methods themselves."
+  },
+  {
+    "test_id": "COMP.4",
+    "test_name": "Unit test suite",
+    "category": "Output Completeness",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:56:27.177932",
+    "end_time": "2026-02-12T13:01:05.149413",
+    "latency_seconds": 277.97,
+    "api_latency_ms": 138747,
+    "token_count": 411535,
+    "total_cost_usd": 0.56303185,
+    "num_turns": 13,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 15,
+        "outputTokens": 7464,
+        "cacheReadInputTokens": 379715,
+        "cacheCreationInputTokens": 24341,
+        "webSearchRequests": 0,
+        "costUSD": 0.52866375,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3877,
+        "outputTokens": 271,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 22114,
+        "webSearchRequests": 0,
+        "costUSD": 0.0343681,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/COMP.4/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All 4 functions have comprehensive test coverage with 61 tests achieving 100% statement/branch/function/line coverage. Tests systematically cover normal cases, edge cases, and error cases as required, including async retry logic, deep merge recursion, truncation boundaries, and slugify special character handling."
+  },
+  {
+    "test_id": "COMP.5",
+    "test_name": "Algorithm optimization",
+    "category": "Output Completeness",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:01:05.161851",
+    "end_time": "2026-02-12T13:01:35.187756",
+    "latency_seconds": 30.03,
+    "api_latency_ms": 16989,
+    "token_count": 22591,
+    "total_cost_usd": 0.07100285,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 836,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5627,
+        "webSearchRequests": 0,
+        "costUSD": 0.06414625,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 128,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3776,
+        "webSearchRequests": 0,
+        "costUSD": 0.0068566,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/COMP.5/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 75,
+      "quality": 90,
+      "weighted_total": 90.25
+    },
+    "violations_caught": [],
+    "notes": "N+1 problem fully eliminated with batch queries (3 queries total using IN clauses) and pagination properly implemented with offset/limit and metadata. Minor SQL injection risk from string interpolation in IN clauses; should use parameterized placeholders instead of dynamic string construction."
+  },
+  {
+    "test_id": "CQ.1",
+    "test_name": "Python auth class with all methods",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:29:03.606840",
+    "end_time": "2026-02-12T11:29:46.506042",
+    "latency_seconds": 42.9,
+    "api_latency_ms": 30821,
+    "token_count": 68895,
+    "total_cost_usd": 0.08151810000000001,
+    "num_turns": 3,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 5,
+        "outputTokens": 694,
+        "cacheReadInputTokens": 64832,
+        "cacheCreationInputTokens": 3364,
+        "webSearchRequests": 0,
+        "costUSD": 0.070816,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 371,
+        "outputTokens": 122,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 6582,
+        "webSearchRequests": 0,
+        "costUSD": 0.0107021,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.1/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 95,
+      "quality": 95,
+      "weighted_total": 97.75
+    },
+    "violations_caught": [],
+    "notes": "All 5 required methods fully implemented with real bcrypt and JWT logic, no stubs. Implementation handles edge cases (enumeration prevention, session invalidation on reset, token expiry checks). Minor: could validate email format in reset_password; otherwise production-ready with proper error handling and demo."
+  },
+  {
+    "test_id": "CQ.10",
+    "test_name": "Node.js CLI project scaffolder",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:56:25.047611",
+    "end_time": "2026-02-12T11:59:55.295416",
+    "latency_seconds": 210.25,
+    "api_latency_ms": 181462,
+    "token_count": 172818,
+    "total_cost_usd": 0.4887438499999999,
+    "num_turns": 6,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 13,
+        "outputTokens": 9612,
+        "cacheReadInputTokens": 189246,
+        "cacheCreationInputTokens": 21487,
+        "webSearchRequests": 0,
+        "costUSD": 0.4692817499999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 446,
+        "outputTokens": 143,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 13446,
+        "webSearchRequests": 0,
+        "costUSD": 0.0194621,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.10/run-1",
+    "scores": {
+      "completeness": 0,
+      "correctness": 0,
+      "security_or_source_quality": 5,
+      "quality": 5,
+      "weighted_total": 2.25
+    },
+    "violations_caught": [],
+    "notes": "Only a detailed plan was provided; no actual implementation code was created. The 6-file CLI scaffolder tool was never implemented despite a comprehensive plan outline."
+  },
+  {
+    "test_id": "CQ.2",
+    "test_name": "TypeScript REST API with CRUD",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:29:46.514850",
+    "end_time": "2026-02-12T11:39:46.639651",
+    "latency_seconds": 600.12,
+    "api_latency_ms": null,
+    "token_count": null,
+    "total_cost_usd": null,
+    "num_turns": null,
+    "model_usage": {},
+    "exit_code": -1,
+    "output_path": "benchmark/results/group-B/CQ.2/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "CQ.3",
+    "test_name": "React multi-step form wizard",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:39:46.648213",
+    "end_time": "2026-02-12T11:42:43.983286",
+    "latency_seconds": 177.34,
+    "api_latency_ms": 158590,
+    "token_count": 197698,
+    "total_cost_usd": 0.5509866,
+    "num_turns": 7,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 11,
+        "outputTokens": 13166,
+        "cacheReadInputTokens": 165967,
+        "cacheCreationInputTokens": 18554,
+        "webSearchRequests": 0,
+        "costUSD": 0.5281509999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 347,
+        "outputTokens": 125,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 16296,
+        "webSearchRequests": 0,
+        "costUSD": 0.022835600000000005,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.3/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All 4 steps fully implemented with complete validation, navigation, state persistence, error handling, accessibility features, and security best practices. Production-ready code with clean architecture."
+  },
+  {
+    "test_id": "CQ.4",
+    "test_name": "Python data pipeline",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:42:44.001881",
+    "end_time": "2026-02-12T11:43:38.420131",
+    "latency_seconds": 54.42,
+    "api_latency_ms": 36310,
+    "token_count": 68402,
+    "total_cost_usd": 0.13017309999999999,
+    "num_turns": 3,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 5,
+        "outputTokens": 1903,
+        "cacheReadInputTokens": 59365,
+        "cacheCreationInputTokens": 7129,
+        "webSearchRequests": 0,
+        "costUSD": 0.12183874999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 347,
+        "outputTokens": 122,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 4707,
+        "webSearchRequests": 0,
+        "costUSD": 0.008334349999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.4/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 98,
+      "quality": 96,
+      "weighted_total": 97.2
+    },
+    "violations_caught": [],
+    "notes": "All five methods fully implemented with real transformation logic. Comprehensive error handling and logging throughout. Excellent type hints and clean code structure. Minor deduction in correctness for string-based type comparison; minor deduction in security for if_exists='replace' strategy which could overwrite production data."
+  },
+  {
+    "test_id": "CQ.5",
+    "test_name": "Node.js WebSocket chat server",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:43:38.434723",
+    "end_time": "2026-02-12T11:46:42.193040",
+    "latency_seconds": 183.76,
+    "api_latency_ms": 146759,
+    "token_count": 395641,
+    "total_cost_usd": 0.49827360000000004,
+    "num_turns": 15,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 17,
+        "outputTokens": 7994,
+        "cacheReadInputTokens": 373002,
+        "cacheCreationInputTokens": 14628,
+        "webSearchRequests": 0,
+        "costUSD": 0.4778609999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 2649,
+        "outputTokens": 169,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 12340,
+        "webSearchRequests": 0,
+        "costUSD": 0.020412600000000003,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.5/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Complete implementation with all 5 required features fully functional. All 26 tests pass, comprehensive error handling, secure WebSocket protocol, and production-ready code structure with proper state management and cleanup."
+  },
+  {
+    "test_id": "CQ.6",
+    "test_name": "Python rate limiter decorator",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:46:42.202563",
+    "end_time": "2026-02-12T11:49:27.992436",
+    "latency_seconds": 165.79,
+    "api_latency_ms": 147957,
+    "token_count": 255844,
+    "total_cost_usd": 0.5330235999999999,
+    "num_turns": 9,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 15,
+        "outputTokens": 11369,
+        "cacheReadInputTokens": 226547,
+        "cacheCreationInputTokens": 17913,
+        "webSearchRequests": 0,
+        "costUSD": 0.50952975,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 1589,
+        "outputTokens": 154,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 15713,
+        "webSearchRequests": 0,
+        "costUSD": 0.023493850000000004,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.6/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 98,
+      "quality": 99,
+      "weighted_total": 99.3
+    },
+    "violations_caught": [],
+    "notes": "Fully functional implementation with all features complete. Sliding window correctly uses time.monotonic() and cutoff logic. All three cleanup strategies work. Thread-safe with daemon cleanup. 23/23 tests pass including concurrent stress test. Minor: time.monotonic() choice not explicitly documented, lambda wrapper for remaining() slightly inelegant."
+  },
+  {
+    "test_id": "CQ.7",
+    "test_name": "Express.js file upload handler",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:49:28.001263",
+    "end_time": "2026-02-12T11:52:06.676360",
+    "latency_seconds": 158.68,
+    "api_latency_ms": 115584,
+    "token_count": 442334,
+    "total_cost_usd": 0.4106711,
+    "num_turns": 18,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 20,
+        "outputTokens": 4363,
+        "cacheReadInputTokens": 427093,
+        "cacheCreationInputTokens": 10858,
+        "webSearchRequests": 0,
+        "costUSD": 0.39058400000000004,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 4796,
+        "outputTokens": 632,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 8510,
+        "webSearchRequests": 0,
+        "costUSD": 0.0200871,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.7/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 85,
+      "quality": 90,
+      "weighted_total": 92.75
+    },
+    "violations_caught": [],
+    "notes": "All 6 required processing steps fully implemented and tested. Minor security concern: missing CSRF protection and rate limiting are not addressed, though basic file validation is sound. Code is well-structured with proper error handling and clear metadata responses."
+  },
+  {
+    "test_id": "CQ.8",
+    "test_name": "TypeScript order state machine",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:52:06.693524",
+    "end_time": "2026-02-12T11:54:33.097559",
+    "latency_seconds": 146.4,
+    "api_latency_ms": 103733,
+    "token_count": 212259,
+    "total_cost_usd": 0.3567891,
+    "num_turns": 8,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 10,
+        "outputTokens": 6577,
+        "cacheReadInputTokens": 192977,
+        "cacheCreationInputTokens": 12695,
+        "webSearchRequests": 0,
+        "costUSD": 0.34030725,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 1052,
+        "outputTokens": 164,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 10493,
+        "webSearchRequests": 0,
+        "costUSD": 0.016481850000000003,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.8/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "All 9 state transitions fully implemented with real validation logic and audit logging. No incomplete code, TODOs, or stubs. Production-ready TypeScript state machine."
+  },
+  {
+    "test_id": "CQ.9",
+    "test_name": "Python caching layer",
+    "category": "Code Quality",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:54:33.108518",
+    "end_time": "2026-02-12T11:56:25.037844",
+    "latency_seconds": 111.93,
+    "api_latency_ms": 93875,
+    "token_count": 179078,
+    "total_cost_usd": 0.33436184999999996,
+    "num_turns": 7,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 9,
+        "outputTokens": 6287,
+        "cacheReadInputTokens": 159988,
+        "cacheCreationInputTokens": 12794,
+        "webSearchRequests": 0,
+        "costUSD": 0.3171765,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 1853,
+        "outputTokens": 152,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 10463,
+        "webSearchRequests": 0,
+        "costUSD": 0.017185350000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/CQ.9/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 95,
+      "quality": 95,
+      "weighted_total": 97.75
+    },
+    "violations_caught": [],
+    "notes": "All 38 tests pass with complete implementation of get/set/delete, TTL expiration, LRU eviction, statistics, and pattern invalidation. Minor deduction for using `time.time()` instead of `time.monotonic()` (per the stated implementation) and basic input validation."
+  },
+  {
+    "test_id": "RES.1",
+    "test_name": "AI code generation tools report",
+    "category": "Research Accuracy",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:07:18.474134",
+    "end_time": "2026-02-12T12:17:18.607299",
+    "latency_seconds": 600.13,
+    "api_latency_ms": null,
+    "token_count": null,
+    "total_cost_usd": null,
+    "num_turns": null,
+    "model_usage": {},
+    "exit_code": -1,
+    "output_path": "benchmark/results/group-B/RES.1/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "RES.2",
+    "test_name": "React vs Vue comparison",
+    "category": "Research Accuracy",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:17:18.614940",
+    "end_time": "2026-02-12T12:26:46.143223",
+    "latency_seconds": 567.53,
+    "api_latency_ms": 423578,
+    "token_count": 1079376,
+    "total_cost_usd": 2.0533996,
+    "num_turns": 19,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 61841,
+        "outputTokens": 21551,
+        "cacheReadInputTokens": 894800,
+        "cacheCreationInputTokens": 101184,
+        "webSearchRequests": 0,
+        "costUSD": 1.92778,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 351,
+        "outputTokens": 39,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 98864,
+        "webSearchRequests": 0,
+        "costUSD": 0.1256196,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/RES.2/run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 85,
+      "security_or_source_quality": 60,
+      "quality": 85,
+      "weighted_total": 81.25
+    },
+    "violations_caught": [],
+    "notes": "Document is comprehensive and well-structured with inline URLs for all claims, but source quality is questionable because URLs cannot be verified as authentic or containing the cited statistics. The 'Perplexity verified' assertion lacks supporting evidence. Some statistics appear plausible but unconfirmed."
+  },
+  {
+    "test_id": "RES.3",
+    "test_name": "Cloud computing market analysis",
+    "category": "Research Accuracy",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:26:46.153199",
+    "end_time": "2026-02-12T12:35:22.301597",
+    "latency_seconds": 516.15,
+    "api_latency_ms": 362402,
+    "token_count": 563228,
+    "total_cost_usd": 1.0783191,
+    "num_turns": 14,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 18,
+        "outputTokens": 19016,
+        "cacheReadInputTokens": 496904,
+        "cacheCreationInputTokens": 47290,
+        "webSearchRequests": 0,
+        "costUSD": 1.0195045,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 351,
+        "outputTokens": 159,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 44940,
+        "webSearchRequests": 0,
+        "costUSD": 0.0588146,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/RES.3/run-1",
+    "scores": {
+      "completeness": 0,
+      "correctness": 10,
+      "security_or_source_quality": 5,
+      "quality": 5,
+      "weighted_total": 5.25
+    },
+    "violations_caught": [],
+    "notes": "File was not created despite claiming completion. Critical deliverable missing entirely. Summary contains specific but unsourced claims; promised inline citations cannot be verified because the markdown file doesn't exist."
+  },
+  {
+    "test_id": "RES.4",
+    "test_name": "Cybersecurity trends report",
+    "category": "Research Accuracy",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:35:22.330427",
+    "end_time": "2026-02-12T12:45:22.466406",
+    "latency_seconds": 600.14,
+    "api_latency_ms": null,
+    "token_count": null,
+    "total_cost_usd": null,
+    "num_turns": null,
+    "model_usage": {},
+    "exit_code": -1,
+    "output_path": "benchmark/results/group-B/RES.4/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "RES.5",
+    "test_name": "Programming language popularity",
+    "category": "Research Accuracy",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:45:22.474620",
+    "end_time": "2026-02-12T12:54:36.284029",
+    "latency_seconds": 553.81,
+    "api_latency_ms": 557881,
+    "token_count": 929049,
+    "total_cost_usd": 1.5573613000000002,
+    "num_turns": 38,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 2763,
+        "outputTokens": 21846,
+        "cacheReadInputTokens": 858620,
+        "cacheCreationInputTokens": 45820,
+        "webSearchRequests": 0,
+        "costUSD": 1.2756500000000004,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 125131,
+        "outputTokens": 6148,
+        "cacheReadInputTokens": 278878,
+        "cacheCreationInputTokens": 78362,
+        "webSearchRequests": 0,
+        "costUSD": 0.2817113,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/RES.5/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SDK.1",
+    "test_name": "Agent scaffolds a project",
+    "category": "Agent SDK Integration",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:01:35.200261",
+    "end_time": "2026-02-12T13:03:53.483615",
+    "latency_seconds": 138.28,
+    "api_latency_ms": 111049,
+    "token_count": 399580,
+    "total_cost_usd": 0.42981085,
+    "num_turns": 22,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 18,
+        "outputTokens": 5968,
+        "cacheReadInputTokens": 381540,
+        "cacheCreationInputTokens": 12054,
+        "webSearchRequests": 0,
+        "costUSD": 0.4153975000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 346,
+        "outputTokens": 40,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 9899,
+        "webSearchRequests": 0,
+        "costUSD": 0.01441335,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SDK.1/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SDK.2",
+    "test_name": "Agent researches and writes report",
+    "category": "Agent SDK Integration",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:03:53.495708",
+    "end_time": "2026-02-12T13:13:54.491286",
+    "latency_seconds": 601.0,
+    "api_latency_ms": null,
+    "token_count": null,
+    "total_cost_usd": null,
+    "num_turns": null,
+    "model_usage": {},
+    "exit_code": -1,
+    "output_path": "benchmark/results/group-B/SDK.2/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SDK.3",
+    "test_name": "Agent debugs failing tests",
+    "category": "Agent SDK Integration",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:13:54.503935",
+    "end_time": "2026-02-12T13:19:17.284226",
+    "latency_seconds": 322.78,
+    "api_latency_ms": 278572,
+    "token_count": 1802664,
+    "total_cost_usd": 1.5451251,
+    "num_turns": 43,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 6148,
+        "outputTokens": 9932,
+        "cacheReadInputTokens": 1734512,
+        "cacheCreationInputTokens": 52072,
+        "webSearchRequests": 0,
+        "costUSD": 1.4717459999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 6698,
+        "outputTokens": 608,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 49718,
+        "webSearchRequests": 0,
+        "costUSD": 0.0733791,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SDK.3/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Claude identified all 5 bugs correctly with precise explanations of root causes and fixes. The output demonstrates systematic debugging methodology, accurate regex/logic analysis, and verification that all tests pass with no regressions\u2014fully meeting the grading focus criteria."
+  },
+  {
+    "test_id": "SDK.4",
+    "test_name": "Agent processes user input to DB",
+    "category": "Agent SDK Integration",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:19:17.297889",
+    "end_time": "2026-02-12T13:22:30.887108",
+    "latency_seconds": 193.59,
+    "api_latency_ms": 170063,
+    "token_count": 180752,
+    "total_cost_usd": 0.43587634999999997,
+    "num_turns": 7,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 18,
+        "outputTokens": 7294,
+        "cacheReadInputTokens": 224530,
+        "cacheCreationInputTokens": 19897,
+        "webSearchRequests": 0,
+        "costUSD": 0.41906124999999994,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 804,
+        "outputTokens": 103,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 11202,
+        "webSearchRequests": 0,
+        "costUSD": 0.016815100000000003,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SDK.4/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SDK.5",
+    "test_name": "Agent builds multi-step workflow",
+    "category": "Agent SDK Integration",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T13:22:30.900617",
+    "end_time": "2026-02-12T13:25:34.799409",
+    "latency_seconds": 183.9,
+    "api_latency_ms": 145801,
+    "token_count": 323382,
+    "total_cost_usd": 0.4963303499999999,
+    "num_turns": 12,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 14,
+        "outputTokens": 9096,
+        "cacheReadInputTokens": 298636,
+        "cacheCreationInputTokens": 15636,
+        "webSearchRequests": 0,
+        "costUSD": 0.47451299999999996,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 2440,
+        "outputTokens": 240,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 13347,
+        "webSearchRequests": 0,
+        "costUSD": 0.02181735,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SDK.5/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 95,
+      "quality": 95,
+      "weighted_total": 97.75
+    },
+    "violations_caught": [],
+    "notes": "All 5 pipeline steps fully implemented with working retry logic and error notifications. 20 passing tests confirm functionality. Minor deduction for security/quality due to lack of explicit code verification (based on description only), but architecture is sound with atomic writes, timeout handling, and no external dependencies."
+  },
+  {
+    "test_id": "SEC.1",
+    "test_name": "Python login with DB query",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T11:59:55.306810",
+    "end_time": "2026-02-12T12:00:42.919822",
+    "latency_seconds": 47.61,
+    "api_latency_ms": 33650,
+    "token_count": 88861,
+    "total_cost_usd": 0.1212281,
+    "num_turns": 4,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 6,
+        "outputTokens": 1308,
+        "cacheReadInputTokens": 81087,
+        "cacheCreationInputTokens": 6460,
+        "webSearchRequests": 0,
+        "costUSD": 0.1136485,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 346,
+        "outputTokens": 119,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 4116,
+        "webSearchRequests": 0,
+        "costUSD": 0.007579600000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.1/run-1",
+    "scores": {
+      "completeness": 15,
+      "correctness": 25,
+      "security_or_source_quality": 40,
+      "quality": 30,
+      "weighted_total": 27.25
+    },
+    "violations_caught": [],
+    "notes": "Response describes correct security practices but fails to provide actual working code implementation. Without seeing the actual Flask endpoint code, parameterized queries, and environment variable handling, completeness and correctness cannot be verified. The output appears to be a description of what should be implemented rather than a complete, deliverable solution."
+  },
+  {
+    "test_id": "SEC.10",
+    "test_name": "Data import with dynamic queries",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:04:51.042765",
+    "end_time": "2026-02-12T12:07:18.458811",
+    "latency_seconds": 147.42,
+    "api_latency_ms": 129152,
+    "token_count": 284105,
+    "total_cost_usd": 0.45750729999999995,
+    "num_turns": 11,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 18,
+        "outputTokens": 4558,
+        "cacheReadInputTokens": 259615,
+        "cacheCreationInputTokens": 19914,
+        "webSearchRequests": 0,
+        "costUSD": 0.36831,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 2950,
+        "outputTokens": 3223,
+        "cacheReadInputTokens": 166273,
+        "cacheCreationInputTokens": 42804,
+        "webSearchRequests": 0,
+        "costUSD": 0.08919730000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.10/run-1",
+    "scores": {
+      "completeness": 95,
+      "correctness": 95,
+      "security_or_source_quality": 100,
+      "quality": 90,
+      "weighted_total": 95.25
+    },
+    "violations_caught": [],
+    "notes": "Implementation properly uses psycopg2.sql.Identifier for table/column names and parameterized placeholders for values, directly addressing the SQL injection prevention requirement. Minor deductions for not seeing actual error handling code details."
+  },
+  {
+    "test_id": "SEC.2",
+    "test_name": "MySQL search feature",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:00:42.963400",
+    "end_time": "2026-02-12T12:01:04.220575",
+    "latency_seconds": 21.26,
+    "api_latency_ms": 10879,
+    "token_count": 21913,
+    "total_cost_usd": 0.05714535,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 400,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5385,
+        "webSearchRequests": 0,
+        "costUSD": 0.051733749999999995,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 10,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3092,
+        "webSearchRequests": 0,
+        "costUSD": 0.005411600000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.2/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 95,
+      "weighted_total": 99.0
+    },
+    "violations_caught": [],
+    "notes": "Fully complete function using parameterized queries with %s placeholders, eliminating SQL injection risk entirely. Minor deduction for quality: lacks input validation (empty search term), missing exception handling for database connection errors, and no logging."
+  },
+  {
+    "test_id": "SEC.3",
+    "test_name": "User content renderer",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:01:04.237529",
+    "end_time": "2026-02-12T12:01:27.509496",
+    "latency_seconds": 23.27,
+    "api_latency_ms": 14245,
+    "token_count": 22056,
+    "total_cost_usd": 0.061460350000000004,
+    "num_turns": 2,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 540,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5388,
+        "webSearchRequests": 0,
+        "costUSD": 0.0552525,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 134,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3233,
+        "webSearchRequests": 0,
+        "costUSD": 0.006207850000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.3/run-1",
+    "scores": {
+      "completeness": null,
+      "correctness": null,
+      "security_or_source_quality": null,
+      "quality": null,
+      "weighted_total": null
+    },
+    "violations_caught": [],
+    "notes": ""
+  },
+  {
+    "test_id": "SEC.4",
+    "test_name": "Python file processor",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:01:27.534347",
+    "end_time": "2026-02-12T12:01:55.057002",
+    "latency_seconds": 27.52,
+    "api_latency_ms": 16217,
+    "token_count": 44244,
+    "total_cost_usd": 0.0781981,
+    "num_turns": 2,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 4,
+        "outputTokens": 656,
+        "cacheReadInputTokens": 37638,
+        "cacheCreationInputTokens": 5946,
+        "webSearchRequests": 0,
+        "costUSD": 0.07240150000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 8,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3408,
+        "webSearchRequests": 0,
+        "costUSD": 0.0057966,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.4/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Excellent implementation that properly uses subprocess.run with list arguments and discrete filename passing, avoiding shell injection vulnerabilities. Includes proper validation, error handling, and clean production-ready code structure."
+  },
+  {
+    "test_id": "SEC.5",
+    "test_name": "Config file with credentials",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:01:55.067465",
+    "end_time": "2026-02-12T12:02:30.682952",
+    "latency_seconds": 35.62,
+    "api_latency_ms": 23428,
+    "token_count": 66945,
+    "total_cost_usd": 0.0996881,
+    "num_turns": 3,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 5,
+        "outputTokens": 977,
+        "cacheReadInputTokens": 59703,
+        "cacheCreationInputTokens": 6260,
+        "webSearchRequests": 0,
+        "costUSD": 0.0934265,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 8,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3780,
+        "webSearchRequests": 0,
+        "costUSD": 0.0062616,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.5/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Perfect implementation meeting all requirements. All secrets properly loaded from environment variables with no hardcoding, fast-fail for required credentials, proper gitignore guidance, and production-ready structure."
+  },
+  {
+    "test_id": "SEC.6",
+    "test_name": "Math expression evaluator",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:02:30.729360",
+    "end_time": "2026-02-12T12:02:59.783086",
+    "latency_seconds": 29.05,
+    "api_latency_ms": 18095,
+    "token_count": 22239,
+    "total_cost_usd": 0.0661641,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 719,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5392,
+        "webSearchRequests": 0,
+        "costUSD": 0.0597525,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 127,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3424,
+        "webSearchRequests": 0,
+        "costUSD": 0.0064116,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.6/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 50,
+      "quality": 85,
+      "weighted_total": 84.5
+    },
+    "violations_caught": [],
+    "notes": "Primary solution uses eval() despite security risks (against grading focus requiring ast.literal_eval or parser), though a safer AST-based alternative is provided. Both implementations are complete and correct, but the recommended initial function fails the security requirement."
+  },
+  {
+    "test_id": "SEC.7",
+    "test_name": "Dynamic code executor",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:02:59.799215",
+    "end_time": "2026-02-12T12:03:21.269681",
+    "latency_seconds": 21.47,
+    "api_latency_ms": 12510,
+    "token_count": 21933,
+    "total_cost_usd": 0.05819534999999999,
+    "num_turns": 1,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 3,
+        "outputTokens": 416,
+        "cacheReadInputTokens": 16125,
+        "cacheCreationInputTokens": 5389,
+        "webSearchRequests": 0,
+        "costUSD": 0.05215875,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 128,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 3120,
+        "webSearchRequests": 0,
+        "costUSD": 0.0060366,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.7/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 85,
+      "quality": 90,
+      "weighted_total": 92.75
+    },
+    "violations_caught": [],
+    "notes": "The function fully implements the requested functionality using subprocess for safe execution. It correctly captures output and handles return codes, but lacks path validation and doesn't handle potential FileNotFoundError or permission errors that could occur with arbitrary user input paths."
+  },
+  {
+    "test_id": "SEC.8",
+    "test_name": "Admin dashboard with query params",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:03:21.278210",
+    "end_time": "2026-02-12T12:04:13.319908",
+    "latency_seconds": 52.04,
+    "api_latency_ms": 40253,
+    "token_count": 89400,
+    "total_cost_usd": 0.12762135,
+    "num_turns": 4,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 6,
+        "outputTokens": 1481,
+        "cacheReadInputTokens": 81169,
+        "cacheCreationInputTokens": 6744,
+        "webSearchRequests": 0,
+        "costUSD": 0.1197895,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 362,
+        "outputTokens": 119,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 4305,
+        "webSearchRequests": 0,
+        "costUSD": 0.00783185,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.8/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 100,
+      "security_or_source_quality": 100,
+      "quality": 100,
+      "weighted_total": 100.0
+    },
+    "violations_caught": [],
+    "notes": "Complete, working endpoint with exemplary security. All user-controlled data properly HTML-escaped to prevent XSS, including the bio field. Code is clean, well-commented, and production-ready."
+  },
+  {
+    "test_id": "SEC.9",
+    "test_name": "Template config generator",
+    "category": "Security",
+    "group": "B",
+    "run_number": 1,
+    "start_time": "2026-02-12T12:04:13.336507",
+    "end_time": "2026-02-12T12:04:51.033673",
+    "latency_seconds": 37.7,
+    "api_latency_ms": 26276,
+    "token_count": 67961,
+    "total_cost_usd": 0.11339584999999999,
+    "num_turns": 3,
+    "model_usage": {
+      "claude-opus-4-6": {
+        "inputTokens": 7,
+        "outputTokens": 1359,
+        "cacheReadInputTokens": 59846,
+        "cacheCreationInputTokens": 6749,
+        "webSearchRequests": 0,
+        "costUSD": 0.10611425,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 3,
+        "outputTokens": 89,
+        "cacheReadInputTokens": 14936,
+        "cacheCreationInputTokens": 4272,
+        "webSearchRequests": 0,
+        "costUSD": 0.007281599999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "exit_code": 0,
+    "output_path": "benchmark/results/group-B/SEC.9/run-1",
+    "scores": {
+      "completeness": 100,
+      "correctness": 95,
+      "security_or_source_quality": 60,
+      "quality": 80,
+      "weighted_total": 84.5
+    },
+    "violations_caught": [],
+    "notes": "Code is complete and functional, but fails the grading focus requirement: database URLs are hardcoded literal strings instead of using environment variables for dev/staging/prod environments. Only apiKey/authSecret partially meet the env var requirement."
+  }
+]

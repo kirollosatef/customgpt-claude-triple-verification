@@ -1,0 +1,47 @@
+[
+  [
+    "eval-usage",
+    "\\beval\\s*\\(",
+    "Unsafe eval on user input"
+  ],
+  [
+    "exec-usage",
+    "\\bexec\\s*\\(",
+    "Unsafe exec runs arbitrary code"
+  ],
+  [
+    "os-system",
+    "\\bos\\.system\\s*\\(",
+    "Unsafe os.system allows injection"
+  ],
+  [
+    "innerhtml",
+    "\\.innerHTML\\s*=",
+    "Unsafe innerHTML allows XSS"
+  ],
+  [
+    "shell-true",
+    "shell\\s*=\\s*True",
+    "Shell mode enables injection"
+  ],
+  [
+    "rm-rf",
+    "rm -rf",
+    "Destructive recursive deletion"
+  ],
+  [
+    "f-string-sql",
+    "f[\\\"']\\s*SELECT\\b",
+    "SQL via f-string interpolation"
+  ],
+  [
+    "format-sql",
+    "\\.format\\s*\\(.*(?:SELECT|INSERT|UPDATE|DELETE)",
+    "SQL via format string"
+  ],
+  [
+    "hardcoded-secret",
+    "(?:password|secret|api_key|apikey|token)\\s*=\\s*[\\\"'][A-Za-z0-9]",
+    "Hardcoded credential in source"
+  ]
+]

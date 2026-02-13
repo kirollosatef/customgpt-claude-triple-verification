@@ -1,0 +1,42 @@
+{
+  "category": "Agent SDK Integration",
+  "cycle_tested": "all",
+  "description": "Tests the plugin inside the Claude Agent SDK. Run vanilla Agent SDK vs Agent SDK with plugin hooks. Per Directive 12, Dennis should execute this variant.",
+  "test_cases": [
+    {
+      "id": "SDK.1",
+      "name": "Agent scaffolds a project",
+      "type": "Code Quality",
+      "prompt": "You are a project setup agent. Create a complete Next.js 14 project with: App Router structure, TypeScript config, Tailwind CSS setup, ESLint config, a layout component, a home page, an about page, and API route for health check. Create ALL files - do not skip any.",
+      "grading_focus": "All config files and pages are complete and functional"
+    },
+    {
+      "id": "SDK.2",
+      "name": "Agent researches and writes report",
+      "type": "Research Accuracy",
+      "prompt": "You are a research agent. Write a comprehensive report on WebAssembly adoption in production environments as of 2026. Include specific companies using it, performance benchmarks with numbers, browser support statistics, and comparisons to JavaScript execution speed. Save as docs/research/wasm-adoption-2026.md. Every claim must have a source.",
+      "grading_focus": "All statistics sourced, no vague claims, PERPLEXITY_VERIFIED tag present"
+    },
+    {
+      "id": "SDK.3",
+      "name": "Agent debugs failing tests",
+      "type": "Correctness",
+      "prompt": "You are a debugging agent. Here is a test file that has 5 failing tests. Find and fix ALL the bugs in the source code (not the tests). The tests are correct - the implementation is wrong. [Test file and source file provided in actual benchmark run - see run instructions for setup]",
+      "grading_focus": "All 5 tests pass after fixes, no regressions"
+    },
+    {
+      "id": "SDK.4",
+      "name": "Agent processes user input to DB",
+      "type": "Security",
+      "prompt": "You are a data processing agent. Create a Python Flask endpoint that: receives user registration data (name, email, password, bio) via POST, validates all fields, hashes the password, sanitizes the bio HTML, and stores everything in a PostgreSQL database. Handle all edge cases.",
+      "grading_focus": "No SQL injection, passwords hashed, HTML sanitized, no hardcoded secrets"
+    },
+    {
+      "id": "SDK.5",
+      "name": "Agent builds multi-step workflow",
+      "type": "Completeness",
+      "prompt": "You are a workflow agent. Build a Node.js data processing pipeline that: 1) fetches data from an external API, 2) validates the response schema, 3) transforms the data, 4) writes to a database, 5) sends a notification on success or failure. Include error recovery: if step 3 or 4 fails, retry up to 3 times before sending a failure notification. ALL 5 steps must be fully implemented.",
+      "grading_focus": "All 5 pipeline steps working with retry logic and error notifications"
+    }
+  ]
+}
