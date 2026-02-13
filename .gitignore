@@ -5,3 +5,6 @@ node_modules/
 Thumbs.db
 nul
 .claude
+benchmark/results/group-A/
+benchmark/results/group-B/
+benchmark/__pycache__/

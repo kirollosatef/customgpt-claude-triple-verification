@@ -1,0 +1,181 @@
+{
+  "date": "2026-02-13",
+  "summary": {
+    "category_1_code_quality": {
+      "matched_tests": 9,
+      "avg_score_A": 97.0,
+      "avg_score_B": 97.2,
+      "stats_A": {
+        "mean": 97.03,
+        "stddev": 4.25,
+        "ci_95_lower": 93.76,
+        "ci_95_upper": 100.3,
+        "count": 9
+      },
+      "stats_B": {
+        "mean": 97.17,
+        "stddev": 4.67,
+        "ci_95_lower": 93.57,
+        "ci_95_upper": 100.76,
+        "count": 9
+      },
+      "improvement_pct": 0.1,
+      "avg_latency_A": 187.0,
+      "avg_latency_B": 161.3,
+      "latency_ratio": 0.86,
+      "avg_tokens_A": 630075,
+      "avg_tokens_B": 315295,
+      "token_ratio": 0.5,
+      "net_value": 0.1,
+      "violations_caught": 0,
+      "outliers_A": 0,
+      "outliers_B": 0
+    },
+    "category_2_security": {
+      "matched_tests": 9,
+      "avg_score_A": 88.6,
+      "avg_score_B": 88.9,
+      "stats_A": {
+        "mean": 88.61,
+        "stddev": 17.19,
+        "ci_95_lower": 75.38,
+        "ci_95_upper": 101.85,
+        "count": 9
+      },
+      "stats_B": {
+        "mean": 88.89,
+        "stddev": 33.33,
+        "ci_95_lower": 63.22,
+        "ci_95_upper": 114.56,
+        "count": 9
+      },
+      "improvement_pct": 0.3,
+      "avg_latency_A": 23.1,
+      "avg_latency_B": 30.3,
+      "latency_ratio": 1.31,
+      "avg_tokens_A": 32237,
+      "avg_tokens_B": 47696,
+      "token_ratio": 1.48,
+      "net_value": -5.2,
+      "violations_caught": 0,
+      "outliers_A": 0,
+      "outliers_B": 0
+    },
+    "category_3_research": {
+      "matched_tests": 2,
+      "avg_score_A": 100.0,
+      "avg_score_B": 100.0,
+      "stats_A": {
+        "mean": 100.0,
+        "stddev": 0.0,
+        "ci_95_lower": 100.0,
+        "ci_95_upper": 100.0,
+        "count": 2
+      },
+      "stats_B": {
+        "mean": 100.0,
+        "stddev": 0.0,
+        "ci_95_lower": 100.0,
+        "ci_95_upper": 100.0,
+        "count": 2
+      },
+      "improvement_pct": 0.0,
+      "avg_latency_A": 174.7,
+      "avg_latency_B": 588.7,
+      "latency_ratio": 3.37,
+      "avg_tokens_A": 482682,
+      "avg_tokens_B": 1334110,
+      "token_ratio": 2.76,
+      "net_value": -32.5,
+      "violations_caught": 0,
+      "outliers_A": 0,
+      "outliers_B": 0
+    },
+    "category_4_completeness": {
+      "matched_tests": 5,
+      "avg_score_A": 100.0,
+      "avg_score_B": 95.8,
+      "stats_A": {
+        "mean": 100.0,
+        "stddev": 0.0,
+        "ci_95_lower": 100.0,
+        "ci_95_upper": 100.0,
+        "count": 5
+      },
+      "stats_B": {
+        "mean": 95.85,
+        "stddev": 5.88,
+        "ci_95_lower": 88.54,
+        "ci_95_upper": 103.16,
+        "count": 5
+      },
+      "improvement_pct": -4.2,
+      "avg_latency_A": 57.6,
+      "avg_latency_B": 64.2,
+      "latency_ratio": 1.11,
+      "avg_tokens_A": 144351,
+      "avg_tokens_B": 99765,
+      "token_ratio": 0.69,
+      "net_value": -5.3,
+      "violations_caught": 0,
+      "outliers_A": 0,
+      "outliers_B": 0
+    },
+    "category_5_agent_sdk": {
+      "matched_tests": 4,
+      "avg_score_A": 75.0,
+      "avg_score_B": 98.8,
+      "stats_A": {
+        "mean": 75.0,
+        "stddev": 50.0,
+        "ci_95_lower": -4.5,
+        "ci_95_upper": 154.5,
+        "count": 4
+      },
+      "stats_B": {
+        "mean": 98.81,
+        "stddev": 2.38,
+        "ci_95_lower": 95.04,
+        "ci_95_upper": 102.59,
+        "count": 4
+      },
+      "improvement_pct": 31.8,
+      "avg_latency_A": 314.8,
+      "avg_latency_B": 236.0,
+      "latency_ratio": 0.75,
+      "avg_tokens_A": 668071,
+      "avg_tokens_B": 823158,
+      "token_ratio": 1.23,
+      "net_value": 30.6,
+      "violations_caught": 0,
+      "outliers_A": 0,
+      "outliers_B": 0
+    },
+    "category_6_adversarial": {
+      "status": "incomplete",
+      "matched": 0,
+      "message": "No matched tests for Adversarial"
+    },
+    "overall": {
+      "matched_tests": 29,
+      "total_tests": 45,
+      "max_runs_per_test": 1,
+      "avg_score_A": 92.1,
+      "avg_score_B": 96.1,
+      "improvement_pct": 4.4,
+      "latency_overhead": "1.5x",
+      "token_overhead": "1.3x",
+      "net_value_score": -2.5,
+      "verdict": "BELOW_THRESHOLD",
+      "any_regression": true,
+      "violations": {
+        "total_plugin_catches": 0,
+        "tests_with_catches": 0,
+        "rules_triggered": [],
+        "vanilla_safety_violations": 6,
+        "plugin_safety_violations": 21,
+        "safety_gap": -15
+      }
+    }
+  }
+}
